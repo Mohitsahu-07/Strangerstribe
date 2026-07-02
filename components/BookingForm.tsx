@@ -53,7 +53,7 @@ export default function BookingForm({ tour }: BookingFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 sticky top-24">
+    <form onSubmit={handleSubmit} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 sticky top-24 animate-slide-in-right shadow-lg">
       <h3 className="text-3xl font-black mb-2 text-gray-900">Secure Your Spot</h3>
       <p className="text-gray-600 mb-6 text-sm">Limited spots in every batch. Book now to join the tribe.</p>
 
@@ -154,7 +154,7 @@ export default function BookingForm({ tour }: BookingFormProps) {
         <button
           type="submit"
           disabled={loading || participants > maxAvailable}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-4 px-4 rounded-lg transition-colors text-lg shadow-md hover:shadow-lg active:scale-95 disabled:cursor-not-allowed"
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-4 px-4 rounded-lg text-lg shadow-md hover:shadow-lg active:scale-95 disabled:cursor-not-allowed btn-smooth"
         >
           {loading ? 'Processing...' : 'Pay ₹2,000 & Secure Spot'}
         </button>

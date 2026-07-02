@@ -8,12 +8,12 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
   return (
     <Link href={`/tours/${tour.id}`}>
-      <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer border border-gray-100 group">
-        <div className="relative h-56 overflow-hidden bg-gray-200">
+      <div className="bg-white rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-gray-100 group card-hover">
+        <div className="relative h-56 overflow-hidden bg-gray-200 image-hover">
           <img
             src={tour.image}
             alt={tour.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover"
           />
           <div className="absolute top-0 right-0 bg-slate-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-bl-lg text-sm font-bold">
             ₹{tour.price.toLocaleString('en-IN')}

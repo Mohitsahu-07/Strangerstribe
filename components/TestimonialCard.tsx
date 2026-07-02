@@ -3,7 +3,7 @@ import { Star } from 'lucide-react';
 
 export default function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all h-full flex flex-col">
+    <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 h-full flex flex-col card-hover">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <p className="font-bold text-gray-900">{testimonial.name}</p>

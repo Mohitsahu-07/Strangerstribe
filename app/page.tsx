@@ -15,24 +15,24 @@ export default function Home() {
       {/* Hero Section */}
       <section className="text-center py-24 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white rounded-3xl px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.2),transparent)] pointer-events-none" />
-        <div className="relative">
+        <div className="relative animate-fade-in-down">
           <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tight leading-tight">
             Come Solo.<br />Leave with a<br />
-            <span className="text-blue-400">Tribe.</span>
+            <span className="text-blue-400 gradient-text">Tribe.</span>
           </h1>
-          <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto opacity-95 leading-relaxed">
+          <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto opacity-95 leading-relaxed stagger-1 animate-fade-in-up">
             Join 2,500+ travelers on epic adventures across the world. Get matched with solo travelers just like you, build friendships that last a lifetime, and explore the planet as part of the Strangers Tribe community.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center stagger-2 animate-fade-in-up">
             <Link
               href="/tours"
-              className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg hover:shadow-blue-500/20 active:scale-95"
+              className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg hover:shadow-blue-500/20 active:scale-95 btn-smooth"
             >
               Explore Trip Batches
             </Link>
             <a
               href="#testimonials"
-              className="inline-block bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl backdrop-blur transition-all"
+              className="inline-block bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl backdrop-blur transition-all btn-smooth"
             >
               Read Travel Stories
             </a>
@@ -43,8 +43,11 @@ export default function Home() {
       {/* Stats Dashboard */}
       <section className="grid md:grid-cols-3 gap-8">
         {stats.map((stat, idx) => (
-          <div key={idx} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center hover:shadow-md transition">
-            <p className="text-5xl font-black text-blue-600 mb-2">{stat.value}</p>
+          <div
+            key={idx}
+            className={`bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center card-hover animate-fade-in-up stagger-${idx + 1}`}
+          >
+            <p className="text-5xl font-black text-blue-600 mb-2 animate-bounce-subtle">{stat.value}</p>
             <p className="text-gray-600 font-semibold">{stat.label}</p>
           </div>
         ))}
@@ -52,7 +55,7 @@ export default function Home() {
 
       {/* Why Join Section */}
       <section className="space-y-12">
-        <div className="text-center">
+        <div className="text-center animate-fade-in-up">
           <h2 className="text-4xl font-black text-gray-900 mb-4">Why Join Strangers Tribe?</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We're not just a travel company. We're a community of adventurers building genuine friendships.
@@ -60,8 +63,8 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover animate-fade-in-up stagger-1">
+            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6 animate-float">
               <Users className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Curated Groups</h3>
@@ -70,8 +73,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover animate-fade-in-up stagger-2">
+            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6 animate-float">
               <MapPin className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Handpicked Routes</h3>
@@ -80,8 +83,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition">
-            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6">
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-hover animate-fade-in-up stagger-3">
+            <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-6 animate-float">
               <Zap className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Trip Captains</h3>
@@ -107,7 +110,7 @@ export default function Home() {
 
       {/* Testimonials */}
       <section id="testimonials" className="space-y-12">
-        <div className="text-center">
+        <div className="text-center animate-fade-in-up">
           <h2 className="text-4xl font-black text-gray-900 mb-4">What Our Travelers Say</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Real stories from real adventurers who started as strangers and became lifelong friends.
@@ -115,21 +118,23 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockTestimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          {mockTestimonials.map((testimonial, idx) => (
+            <div key={testimonial.id} className={`animate-fade-in-up stagger-${(idx % 5) + 1}`}>
+              <TestimonialCard testimonial={testimonial} />
+            </div>
           ))}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-16 rounded-3xl text-center shadow-lg">
-        <h2 className="text-5xl font-black mb-6">Ready to Find Your Tribe?</h2>
-        <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-16 rounded-3xl text-center shadow-lg animate-fade-in-up">
+        <h2 className="text-5xl font-black mb-6 animate-fade-in-down">Ready to Find Your Tribe?</h2>
+        <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed stagger-1 animate-fade-in-up">
           Your next adventure and lifelong friends are just one click away. Don't travel alone anymore.
         </p>
         <Link
           href="/tours"
-          className="inline-block bg-white text-blue-700 font-bold py-4 px-12 rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-lg"
+          className="inline-block bg-white text-blue-700 font-bold py-4 px-12 rounded-xl hover:bg-gray-50 transition-colors shadow-lg text-lg btn-smooth stagger-2 animate-fade-in-up"
         >
           Browse All Trips
         </Link>

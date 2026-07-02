@@ -47,8 +47,8 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="space-y-12">
-      <div>
-        <a href="/tours" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 mb-6">
+      <div className="animate-fade-in-down">
+        <a href="/tours" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 mb-6 btn-smooth">
           ← Back to Trips
         </a>
       </div>
@@ -56,21 +56,21 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
       <div className="grid lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-8">
           {/* Hero Image */}
-          <div className="rounded-2xl overflow-hidden h-96 bg-gray-200 shadow-md relative group">
-            <img src={tour.image} alt={tour.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div className="rounded-2xl overflow-hidden h-96 bg-gray-200 shadow-md relative image-hover animate-fade-in-left">
+            <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
             <div className="absolute top-6 left-6 bg-slate-900/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold">
               {tour.destination}
             </div>
           </div>
 
           {/* Title & Description */}
-          <div>
+          <div className="animate-fade-in-up stagger-1">
             <h1 className="text-5xl font-black text-gray-900 mb-3">{tour.title}</h1>
             <p className="text-xl text-gray-600 leading-relaxed">{tour.description}</p>
           </div>
 
           {/* Trip Dashboard */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 animate-fade-in-up stagger-2">
             <h3 className="text-2xl font-black mb-6 text-gray-900">Trip Details</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               <div className="space-y-2">
@@ -104,7 +104,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
           </div>
 
           {/* Highlights & Inclusions */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 animate-fade-in-up stagger-3">
             <div className="bg-blue-50 p-8 rounded-2xl border-2 border-blue-100">
               <h3 className="font-black text-xl text-blue-900 mb-6 flex items-center gap-2">
                 <TrendingUp className="text-blue-600" />
@@ -136,7 +136,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
           </div>
 
           {/* Why This Trip */}
-          <div className="bg-orange-50 p-8 rounded-2xl border-2 border-orange-100">
+          <div className="bg-orange-50 p-8 rounded-2xl border-2 border-orange-100 animate-fade-in-up stagger-4">
             <h3 className="font-black text-2xl text-gray-900 mb-4">Why You'll Love This Trip</h3>
             <ul className="space-y-3 text-gray-700">
               <li className="flex gap-3">
