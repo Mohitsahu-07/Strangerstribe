@@ -8,7 +8,8 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:3000)",
-      "WebFetch(domain:vaiyaritravels.com)"
+      "WebFetch(domain:vaiyaritravels.com)",
+      "Bash(pkill -f \"npm run dev\")"
     ]
   }
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Share2, Video, MessageSquare } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -28,13 +28,13 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex gap-3">
               <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <Instagram size={20} />
+                <Share2 size={20} />
               </a>
               <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <Youtube size={20} />
+                <Video size={20} />
               </a>
               <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <MessageCircle size={20} />
+                <MessageSquare size={20} />
               </a>
             </div>
             <Link

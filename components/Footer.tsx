@@ -1,4 +1,4 @@
-import { Instagram, Youtube, MessageCircle, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Share2, Video, MessageSquare } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -56,13 +56,13 @@ export default function Footer() {
             <p className="text-sm">&copy; 2024 Strangers Tribe. All rights reserved.</p>
             <div className="flex gap-4">
               <a href="#" className="text-gray-400 hover:text-blue-400 transition">
-                <Instagram size={20} />
+                <Share2 size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-blue-400 transition">
-                <Youtube size={20} />
+                <Video size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-blue-400 transition">
-                <MessageCircle size={20} />
+                <MessageSquare size={20} />
               </a>
             </div>
           </div>
