@@ -57,9 +57,6 @@ export default function BookingsPage() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900">{getTourTitle(booking.tourId)}</h3>
-                  {booking.packageName && (
-                    <p className="text-sm font-semibold text-blue-600 mt-1">{booking.packageName}</p>
-                  )}
                 </div>
                 <span
                   className={`px-4 py-1 rounded-full font-semibold text-white ${

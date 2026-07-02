@@ -9,7 +9,11 @@
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:3000)",
       "WebFetch(domain:vaiyaritravels.com)",
-      "Bash(pkill -f \"npm run dev\")"
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(curl -s http://localhost:3000/tours)",
+      "Bash(curl -s http://localhost:3000/tours/1)",
+      "Bash(curl -s http://localhost:3000/bookings)",
+      "mcp__ide__getDiagnostics"
     ]
   }
 }

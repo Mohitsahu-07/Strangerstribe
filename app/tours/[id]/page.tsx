@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Tour } from '@/lib/types';
-import { CheckCircle, AlertCircle, Loader, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
+import { CheckCircle, AlertCircle, Loader, TrendingUp } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 
 export default function TourDetailPage({ params }: { params: { id: string } }) {

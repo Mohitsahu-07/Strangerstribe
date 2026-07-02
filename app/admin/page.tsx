@@ -94,10 +94,7 @@ export default function AdminPage() {
                 <tr key={booking.id} className="border-b hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-900">{booking.customerName}</td>
                   <td className="px-6 py-4 text-gray-900">
-                    <div>{tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}</div>
-                    {booking.packageName && (
-                      <div className="text-xs text-blue-600 font-semibold">{booking.packageName}</div>
-                    )}
+                    {tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}
                   </td>
                   <td className="px-6 py-4 text-gray-900">{booking.participants}</td>
                   <td className="px-6 py-4 text-gray-900 font-medium">₹{booking.totalPrice.toLocaleString('en-IN')}</td>

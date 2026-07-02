@@ -23,7 +23,7 @@ export default function BookingForm({ tour }: BookingFormProps) {
   const totalPrice = tour.price * participants;
   const advanceAmount = 2000;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');

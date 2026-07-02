@@ -21,7 +21,6 @@ export async function POST(request: Request) {
     customerName: body.customerName,
     customerEmail: body.customerEmail,
     customerPhone: body.customerPhone,
-    packageName: body.packageName || 'Standard Package',
   };
   bookings.push(newBooking);
   return NextResponse.json(newBooking, { status: 201 });
