@@ -10,7 +10,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 const HERO_SLIDES = [
   {
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80',
-    tagline: 'Don't find holidays to travel',
+    tagline: "Don't find holidays to travel",
     title: 'Where Solo Travelers\nBecome Tribe',
     description: 'Scenic Himalayan treks, offbeat weekend escapes, and backpacking group adventures.'
   },

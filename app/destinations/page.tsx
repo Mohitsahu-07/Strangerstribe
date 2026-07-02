@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Star, Users, Calendar, Flame, Loader, Filter } from 'lucide-react';
 import { Tour } from '@/lib/types';
+import TourCard from '@/components/TourCard';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export default function DestinationsPage() {
@@ -54,15 +55,15 @@ export default function DestinationsPage() {
             <button
               key={btn.value}
               onClick={() => setFilter(btn.value)}
-              className={`px-6 py-3 rounded-lg font-bold transition-all btn-smooth ${`stagger-${idx + 1} animate-fade-in-up`} ${
+              className={`px-6 py-3 rounded-lg font-bold transition-all btn-smooth flex items-center gap-2 ${`stagger-${idx + 1} animate-fade-in-up`} ${
                 filter === btn.value
                   ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-600'
-            }`}
-          >
-            {difficulty === 'all' && <Filter size={18} />}
-            {difficulty === 'all' ? 'All Trips' : `${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} Level`}
-          </button>
+                  : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-600'
+              }`}
+            >
+              {btn.value === 'all' && <Filter size={18} />}
+              {btn.label}
+            </button>
         ))}
       </div>
 
@@ -79,6 +80,7 @@ export default function DestinationsPage() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }
