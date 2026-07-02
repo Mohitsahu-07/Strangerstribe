@@ -19,7 +19,7 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
           ))}
       </div>
 
-      <p className="text-gray-700 mb-4 flex-1 italic">"{testimonial.review}"</p>
+      <p className="text-gray-700 mb-4 flex-1 italic">&ldquo;{testimonial.review}&rdquo;</p>
 
       <p className="text-sm font-semibold text-blue-600">✦ {testimonial.tourName}</p>
     </div>

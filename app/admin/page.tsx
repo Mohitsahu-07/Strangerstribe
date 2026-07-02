@@ -15,7 +15,7 @@ export default function AdminPage() {
       try {
         const [bookingsRes, toursRes] = await Promise.all([
           fetch('/api/bookings'),
-          fetch('/api/tours'),
+          fetch('/api/destinations'),
         ]);
         setBookings(await bookingsRes.json());
         setTours(await toursRes.json());

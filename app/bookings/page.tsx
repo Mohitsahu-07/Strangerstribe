@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Booking, Tour } from '@/lib/types';
 import { Loader, Calendar, Users } from 'lucide-react';
 
@@ -46,9 +47,9 @@ export default function BookingsPage() {
       {bookings.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg border-2 border-dashed border-gray-300">
           <p className="text-gray-600 text-lg">No bookings yet</p>
-          <a href="/tours" className="text-blue-600 hover:underline mt-2 inline-block">
-            Browse tours to make your first booking
-          </a>
+          <Link href="/destinations" className="text-blue-600 hover:underline mt-2 inline-block">
+            Browse destinations to make your first booking
+          </Link>
         </div>
       ) : (
         <div className="space-y-4">

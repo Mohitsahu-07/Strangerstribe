@@ -1,50 +1,47 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Share2, Video, MessageSquare } from 'lucide-react';
+import { Compass } from 'lucide-react';
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="font-black text-2xl text-gray-900">
-            Strangers<span className="text-blue-600">Tribe</span>
+    <header
+      className={`fixed top-0 left-0 right-0 z-[110] transition-all duration-500 py-5 px-6 md:px-12 ${
+        scrolled
+          ? 'bg-slate-950/85 backdrop-blur-md border-b border-slate-900 shadow-lg'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="max-w-[1500px] mx-auto flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 font-display font-semibold text-2xl text-white tracking-tight">
+          <Compass size={28} className="text-[#FF4B38]" />
+          <span>Strangers Tribe</span>
+        </Link>
+        <nav className="flex gap-8 text-xs font-semibold uppercase tracking-widest">
+          <Link href="/" className="text-white/95 hover:text-[#FF4B38] transition-colors py-1">
+            Home
           </Link>
-
-          {/* Main Nav */}
-          <nav className="hidden md:flex gap-8 items-center">
-            <Link href="/tours" className="text-gray-700 font-semibold hover:text-blue-600 transition">
-              Destinations
-            </Link>
-            <a href="/#testimonials" className="text-gray-700 font-semibold hover:text-blue-600 transition">
-              Stories
-            </a>
-            <a href="#contact" className="text-gray-700 font-semibold hover:text-blue-600 transition">
-              Contact
-            </a>
-          </nav>
-
-          {/* Right Actions */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex gap-3">
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <Share2 size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <Video size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                <MessageSquare size={20} />
-              </a>
-            </div>
-            <Link
-              href="/tours"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition"
-            >
-              Book Now
-            </Link>
-          </div>
-        </div>
+          <Link href="/destinations" className="text-white/95 hover:text-[#FF4B38] transition-colors py-1">
+            Destinations
+          </Link>
+          <Link href="/bookings" className="text-white/95 hover:text-[#FF4B38] transition-colors py-1">
+            My Bookings
+          </Link>
+          <Link href="/admin" className="text-white/95 hover:text-[#FF4B38] transition-colors py-1">
+            Admin
+          </Link>
+        </nav>
       </div>
     </header>
   );

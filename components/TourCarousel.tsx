@@ -1,0 +1,157 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Tour } from '@/lib/types';
+
+interface TourCarouselProps {
+  tours: Tour[];
+  title: string;
+}
+
+export default function TourCarousel({ tours, title }: TourCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlay) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % tours.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlay, tours.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + tours.length) % tours.length);
+    setIsAutoPlay(false);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % tours.length);
+    setIsAutoPlay(false);
+  };
+
+  const currentTour = tours[currentIndex];
+
+  return (
+    <div className="space-y-8">
+      <h2 className="text-4xl md:text-5xl font-black text-gray-900 px-4 md:px-0 animate-fade-in-left">
+        {title}
+      </h2>
+
+      {/* Main Carousel */}
+      <div
+        className="relative w-full h-96 md:h-[500px] rounded-3xl overflow-hidden group"
+        onMouseEnter={() => setIsAutoPlay(false)}
+        onMouseLeave={() => setIsAutoPlay(true)}
+      >
+        {/* Carousel Images */}
+        {tours.map((tour, idx) => (
+          <div
+            key={tour.id}
+            className={`absolute inset-0 transition-all duration-700 ease-out ${
+              idx === currentIndex
+                ? 'opacity-100 scale-100 z-10'
+                : 'opacity-0 scale-105 z-0'
+            }`}
+          >
+            <img
+              src={tour.image}
+              alt={tour.title}
+              className="w-full h-full object-cover"
+            />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+            {/* Carousel Content */}
+            {idx === currentIndex && (
+              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 text-white animate-fade-in-up">
+                <h3 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                  {tour.title}
+                </h3>
+                <p className="text-lg md:text-xl mb-6 text-gray-200 max-w-2xl line-clamp-2">
+                  {tour.description}
+                </p>
+                <div className="flex gap-4 flex-wrap">
+                  <span className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all btn-smooth">
+                    ₹{tour.price.toLocaleString('en-IN')}
+                  </span>
+                  <Link
+                    href={`/destinations/${tour.id}`}
+                    className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-3 px-8 rounded-lg backdrop-blur transition-all btn-smooth"
+                  >
+                    Explore →
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {tours.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setCurrentIndex(idx);
+                setIsAutoPlay(false);
+              }}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                idx === currentIndex
+                  ? 'w-12 bg-white'
+                  : 'w-3 bg-white/50 hover:bg-white/70'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Thumbnail Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 md:px-0">
+        {tours.map((tour, idx) => (
+          <button
+            key={tour.id}
+            onClick={() => {
+              setCurrentIndex(idx);
+              setIsAutoPlay(false);
+            }}
+            className={`netflix-card relative group rounded-2xl overflow-hidden h-40 cursor-pointer animate-scale-in ${`stagger-${(idx % 5) + 1}`}`}
+          >
+            <img
+              src={tour.image}
+              alt={tour.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+              <p className="text-white font-bold text-sm line-clamp-2">
+                {tour.title}
+              </p>
+              <p className="text-yellow-400 font-semibold text-xs">★ {tour.rating}</p>
+            </div>
+            {currentIndex === idx && (
+              <div className="absolute inset-0 border-4 border-blue-500 rounded-2xl" />
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}

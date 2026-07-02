@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { Tour } from '@/lib/types';
 import { CheckCircle, AlertCircle, Loader, TrendingUp } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
+import Link from 'next/link';
 
-export default function TourDetailPage({ params }: { params: { id: string } }) {
+export default function TourDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const [tour, setTour] = useState<Tour | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -13,7 +15,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchTour = async () => {
       try {
-        const response = await fetch(`/api/tours/${params.id}`);
+        const response = await fetch(`/api/destinations/${id}`);
         if (!response.ok) throw new Error('Tour not found');
         const data = await response.json();
         setTour(data);
@@ -24,7 +26,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
       }
     };
     fetchTour();
-  }, [params.id]);
+  }, [id]);
 
   if (loading)
     return (
@@ -48,9 +50,9 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
   return (
     <div className="space-y-12">
       <div className="animate-fade-in-down">
-        <a href="/tours" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 mb-6 btn-smooth">
+        <Link href="/destinations" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 mb-6 btn-smooth">
           ← Back to Trips
-        </a>
+        </Link>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-10">
@@ -122,7 +124,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
             <div className="bg-emerald-50 p-8 rounded-2xl border-2 border-emerald-100">
               <h3 className="font-black text-xl text-emerald-900 mb-6 flex items-center gap-2">
                 <CheckCircle className="text-emerald-600" />
-                What's Included
+                What&apos;s Included
               </h3>
               <ul className="space-y-3">
                 {tour.inclusions.map((inclusion, i) => (
@@ -137,7 +139,7 @@ export default function TourDetailPage({ params }: { params: { id: string } }) {
 
           {/* Why This Trip */}
           <div className="bg-orange-50 p-8 rounded-2xl border-2 border-orange-100 animate-fade-in-up stagger-4">
-            <h3 className="font-black text-2xl text-gray-900 mb-4">Why You'll Love This Trip</h3>
+            <h3 className="font-black text-2xl text-gray-900 mb-4">Why You&apos;ll Love This Trip</h3>
             <ul className="space-y-3 text-gray-700">
               <li className="flex gap-3">
                 <span className="text-2xl">🤝</span>

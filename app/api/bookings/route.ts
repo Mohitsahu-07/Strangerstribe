@@ -2,7 +2,7 @@ import { mockBookings } from '@/lib/mockData';
 import { NextResponse } from 'next/server';
 import { Booking } from '@/lib/types';
 
-let bookings = [...mockBookings];
+const bookings = [...mockBookings];
 
 export async function GET() {
   return NextResponse.json(bookings);

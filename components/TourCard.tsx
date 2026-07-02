@@ -7,7 +7,7 @@ export default function TourCard({ tour }: { tour: Tour }) {
   const isUrgent = availableSpots <= 3;
 
   return (
-    <Link href={`/tours/${tour.id}`}>
+    <Link href={`/destinations/${tour.id}`}>
       <div className="bg-white rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-gray-100 group card-hover">
         <div className="relative h-56 overflow-hidden bg-gray-200 image-hover">
           <img

@@ -5,7 +5,7 @@ import TourCard from '@/components/TourCard';
 import { Tour } from '@/lib/types';
 import { Loader, Filter } from 'lucide-react';
 
-export default function ToursPage() {
+export default function DestinationsPage() {
   const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
@@ -13,7 +13,7 @@ export default function ToursPage() {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        const response = await fetch('/api/tours');
+        const response = await fetch('/api/destinations');
         const data = await response.json();
         setTours(data);
       } finally {
