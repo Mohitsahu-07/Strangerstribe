@@ -3,8 +3,8 @@ export interface Tour {
   title: string;
   description: string;
   destination: string;
-  duration: number; // days
-  price: number; // per person
+  duration: number;
+  price: number;
   maxParticipants: number;
   currentParticipants: number;
   image: string;
@@ -15,6 +15,7 @@ export interface Tour {
   difficulty: 'easy' | 'moderate' | 'hard';
   rating: number;
   reviews: number;
+  spotsLeft?: number;
 }
 
 export interface Booking {
@@ -35,5 +36,14 @@ export interface User {
   name: string;
   email: string;
   phone: string;
-  bookings: string[]; // booking IDs
+  bookings: string[];
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  origin: string;
+  review: string;
+  rating: number;
+  tourName: string;
 }

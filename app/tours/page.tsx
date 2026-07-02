@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import TourCard from '@/components/TourCard';
 import { Tour } from '@/lib/types';
-import { Loader } from 'lucide-react';
+import { Loader, Filter } from 'lucide-react';
 
 export default function ToursPage() {
   const [tours, setTours] = useState<Tour[]>([]);
@@ -32,34 +32,37 @@ export default function ToursPage() {
   });
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">All Tours</h1>
-        <p className="text-gray-600">Explore our curated collection of amazing destinations</p>
+    <div className="space-y-12">
+      <div className="text-center">
+        <h1 className="text-5xl font-black text-gray-900 mb-4">All Trip Batches</h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Choose your next adventure. Each batch is a new tribe, a new story.
+        </p>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-3 justify-center">
         {['all', 'easy', 'moderate', 'hard'].map((difficulty) => (
           <button
             key={difficulty}
             onClick={() => setFilter(difficulty)}
-            className={`px-6 py-2 rounded-lg font-semibold transition-colors capitalize ${
+            className={`px-6 py-3 rounded-lg font-bold transition-all flex items-center gap-2 ${
               filter === difficulty
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                ? 'bg-blue-600 text-white shadow-md'
+                : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-blue-600'
             }`}
           >
-            {difficulty === 'all' ? 'All Tours' : `${difficulty} Level`}
+            {difficulty === 'all' && <Filter size={18} />}
+            {difficulty === 'all' ? 'All Trips' : `${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} Level`}
           </button>
         ))}
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <Loader className="animate-spin text-blue-600" size={32} />
+        <div className="flex justify-center items-center py-20">
+          <Loader className="animate-spin text-blue-600" size={40} />
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTours.map((tour) => (
             <TourCard key={tour.id} tour={tour} />
           ))}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Booking, Tour } from '@/lib/types';
-import { Loader, Calendar, Users, DollarSign } from 'lucide-react';
+import { Loader, Calendar, Users } from 'lucide-react';
 
 export default function BookingsPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -55,7 +55,12 @@ export default function BookingsPage() {
           {bookings.map((booking) => (
             <div key={booking.id} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-gray-900">{getTourTitle(booking.tourId)}</h3>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">{getTourTitle(booking.tourId)}</h3>
+                  {booking.packageName && (
+                    <p className="text-sm font-semibold text-blue-600 mt-1">{booking.packageName}</p>
+                  )}
+                </div>
                 <span
                   className={`px-4 py-1 rounded-full font-semibold text-white ${
                     booking.status === 'confirmed'
@@ -87,10 +92,10 @@ export default function BookingsPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <DollarSign className="text-blue-600 mt-1" size={20} />
+                  <span className="text-blue-600 font-bold text-xl leading-none mt-0.5">₹</span>
                   <div>
                     <p className="text-gray-600 text-sm">Total Price</p>
-                    <p className="font-semibold text-gray-900">${booking.totalPrice.toFixed(2)}</p>
+                    <p className="font-semibold text-gray-900">₹{booking.totalPrice.toLocaleString('en-IN')}</p>
                   </div>
                 </div>
               </div>

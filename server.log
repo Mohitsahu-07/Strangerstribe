@@ -1,0 +1,428 @@
+
+> strangerstribe@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by process 1788, using available port 3001 instead.
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.1.7:3001
+✓ Ready in 910ms
+⨯  GET / 200 in 86ms (next.js: 7ms, application-code: 79ms)
+ GET / 200 in 111ms (next.js: 6ms, application-code: 104ms)
+ GET /tours 200 in 639ms (next.js: 597ms, application-code: 42ms)
+ GET /api/tours 200 in 722ms (next.js: 695ms, application-code: 27ms)
+ GET /api/tours 200 in 13ms (next.js: 5ms, application-code: 8ms)
+ GET /tours/1 200 in 1418ms (next.js: 1369ms, application-code: 49ms)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage.useEffect.fetchTour (app/tours/[id]/page.tsx:16:59)
+    at TourDetailPage.useEffect (app/tours/[id]/page.tsx:26:5)
+  14 |     const fetchTour = async () => {
+  15 |       try {
+> 16 |         const response = await fetch(`/api/tours/${params.id}`);
+     |                                                           ^
+  17 |         if (!response.ok) throw new Error('Tour not found');
+  18 |         const data = await response.json();
+  19 |         setTour(data); (app/tours/[id]/page.tsx:16:59)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage.useEffect.fetchTour (app/tours/[id]/page.tsx:16:59)
+    at TourDetailPage.useEffect (app/tours/[id]/page.tsx:26:5)
+  14 |     const fetchTour = async () => {
+  15 |       try {
+> 16 |         const response = await fetch(`/api/tours/${params.id}`);
+     |                                                           ^
+  17 |         if (!response.ok) throw new Error('Tour not found');
+  18 |         const data = await response.json();
+  19 |         setTour(data); (app/tours/[id]/page.tsx:16:59)
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+ GET /api/tours/undefined 404 in 1875ms (next.js: 1315ms, application-code: 561ms)
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+ GET /api/tours/undefined 404 in 481ms (next.js: 20ms, application-code: 461ms)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+ GET /api/tours 200 in 13ms (next.js: 6ms, application-code: 7ms)
+ GET /api/tours 200 in 9ms (next.js: 4ms, application-code: 5ms)
+ GET /tours/2 200 in 44ms (next.js: 14ms, application-code: 29ms)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage.useEffect.fetchTour (app/tours/[id]/page.tsx:16:59)
+    at TourDetailPage.useEffect (app/tours/[id]/page.tsx:26:5)
+  14 |     const fetchTour = async () => {
+  15 |       try {
+> 16 |         const response = await fetch(`/api/tours/${params.id}`);
+     |                                                           ^
+  17 |         if (!response.ok) throw new Error('Tour not found');
+  18 |         const data = await response.json();
+  19 |         setTour(data); (app/tours/[id]/page.tsx:16:59)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage.useEffect.fetchTour (app/tours/[id]/page.tsx:16:59)
+    at TourDetailPage.useEffect (app/tours/[id]/page.tsx:26:5)
+  14 |     const fetchTour = async () => {
+  15 |       try {
+> 16 |         const response = await fetch(`/api/tours/${params.id}`);
+     |                                                           ^
+  17 |         if (!response.ok) throw new Error('Tour not found');
+  18 |         const data = await response.json();
+  19 |         setTour(data); (app/tours/[id]/page.tsx:16:59)
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+ GET /api/tours/undefined 404 in 560ms (next.js: 19ms, application-code: 541ms)
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+Error: Route "/api/tours/[id]" used `params.id`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at <unknown> (app\api\tours\[id]\route.ts:8:54)
+    at Array.find (<anonymous>)
+    at GET (app\api\tours\[id]\route.ts:8:26)
+   6 |   { params }: { params: { id: string } }
+   7 | ) {
+>  8 |   const tour = mockTours.find((t) => t.id === params.id);
+     |                                                      ^
+   9 |   if (!tour) {
+  10 |     return NextResponse.json({ error: 'Tour not found' }, { status: 404 });
+  11 |   }
+ GET /api/tours/undefined 404 in 401ms (next.js: 4ms, application-code: 398ms)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+[browser] A param property was accessed directly with `params.id`. `params` is a Promise and must be unwrapped with `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis 
+    at TourDetailPage (app/tours/[id]/page.tsx:27:14)
+  25 |     };
+  26 |     fetchTour();
+> 27 |   }, [params.id]);
+     |              ^
+  28 |
+  29 |   if (loading)
+  30 |     return ( (app/tours/[id]/page.tsx:27:14)
+ GET /api/tours 200 in 12ms (next.js: 3ms, application-code: 9ms)
+ GET /api/tours 200 in 8ms (next.js: 3ms, application-code: 5ms)
+✓ Compiled in 84ms
+✓ Compiled in 79ms
+✓ Compiled in 70ms
+✓ Compiled in 144ms
+⨯ ./app/page.tsx:3:1
+Module not found: Can't resolve '@/components/TestimonialCard'
+  [90m1 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+  [90m2 |[0m [36mimport[0m { [33mUsers[0m, [33mMapPin[0m, [33mZap[0m } [36mfrom[0m [32m'lucide-react'[0m;
+[31m[1m>[0m [90m3 |[0m [36mimport[0m [33mTestimonialCard[0m [36mfrom[0m [32m'@/components/TestimonialCard'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m [36mimport[0m { mockTestimonials } [36mfrom[0m [32m'@/lib/testimonials'[0m;
+  [90m5 |[0m
+  [90m6 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mHome[0m() {
+
+Import map: aliased to relative './components/TestimonialCard' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./app/page.tsx:3:1
+Module not found: Can't resolve '@/components/TestimonialCard'
+  [90m1 |[0m [36mimport[0m [33mLink[0m [36mfrom[0m [32m'next/link'[0m;
+  [90m2 |[0m [36mimport[0m { [33mUsers[0m, [33mMapPin[0m, [33mZap[0m } [36mfrom[0m [32m'lucide-react'[0m;
+[31m[1m>[0m [90m3 |[0m [36mimport[0m [33mTestimonialCard[0m [36mfrom[0m [32m'@/components/TestimonialCard'[0m;
+  [90m  |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m4 |[0m [36mimport[0m { mockTestimonials } [36mfrom[0m [32m'@/lib/testimonials'[0m;
+  [90m5 |[0m
+  [90m6 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mHome[0m() {
+
+Import map: aliased to relative './components/TestimonialCard' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+

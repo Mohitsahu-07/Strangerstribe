@@ -64,7 +64,7 @@ export default function AdminPage() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow p-6">
             <p className="text-gray-600 text-sm font-medium mb-2">Total Revenue</p>
-            <p className="text-3xl font-bold text-gray-900">${totalRevenue.toFixed(2)}</p>
+            <p className="text-3xl font-bold text-gray-900">₹{totalRevenue.toLocaleString('en-IN')}</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <p className="text-gray-600 text-sm font-medium mb-2">Confirmed Bookings</p>
@@ -94,10 +94,13 @@ export default function AdminPage() {
                 <tr key={booking.id} className="border-b hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-900">{booking.customerName}</td>
                   <td className="px-6 py-4 text-gray-900">
-                    {tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}
+                    <div>{tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}</div>
+                    {booking.packageName && (
+                      <div className="text-xs text-blue-600 font-semibold">{booking.packageName}</div>
+                    )}
                   </td>
                   <td className="px-6 py-4 text-gray-900">{booking.participants}</td>
-                  <td className="px-6 py-4 text-gray-900">${booking.totalPrice.toFixed(2)}</td>
+                  <td className="px-6 py-4 text-gray-900 font-medium">₹{booking.totalPrice.toLocaleString('en-IN')}</td>
                   <td className="px-6 py-4">
                     <span
                       className={`px-3 py-1 rounded-full text-sm font-semibold text-white ${
@@ -135,7 +138,7 @@ export default function AdminPage() {
                 <tr key={tour.id} className="border-b hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-900 font-semibold">{tour.title}</td>
                   <td className="px-6 py-4 text-gray-900">{tour.destination}</td>
-                  <td className="px-6 py-4 text-gray-900">${tour.price.toFixed(2)}</td>
+                  <td className="px-6 py-4 text-gray-900">₹{tour.price.toLocaleString('en-IN')}</td>
                   <td className="px-6 py-4 text-gray-900">
                     {tour.currentParticipants}/{tour.maxParticipants}
                   </td>

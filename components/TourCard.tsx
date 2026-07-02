@@ -1,50 +1,59 @@
 import { Tour } from '@/lib/types';
 import Link from 'next/link';
-import { Star, Users, Calendar, MapPin } from 'lucide-react';
+import { Star, Users, Calendar, Flame } from 'lucide-react';
 
 export default function TourCard({ tour }: { tour: Tour }) {
   const availableSpots = tour.maxParticipants - tour.currentParticipants;
+  const isUrgent = availableSpots <= 3;
 
   return (
     <Link href={`/tours/${tour.id}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden cursor-pointer">
-        <div className="relative h-48 overflow-hidden bg-gray-200">
+      <div className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all overflow-hidden cursor-pointer border border-gray-100 group">
+        <div className="relative h-56 overflow-hidden bg-gray-200">
           <img
             src={tour.image}
             alt={tour.title}
-            className="w-full h-full object-cover hover:scale-105 transition-transform"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
-          <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            ${tour.price}/person
+          <div className="absolute top-0 right-0 bg-slate-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-bl-lg text-sm font-bold">
+            ₹{tour.price.toLocaleString('en-IN')}
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+            <p className="text-white font-bold text-lg">{tour.destination}</p>
           </div>
         </div>
 
-        <div className="p-5">
-          <h3 className="text-xl font-bold mb-2 text-gray-800">{tour.title}</h3>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">{tour.title}</h3>
           <p className="text-gray-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
 
-          <div className="space-y-2 mb-4 text-sm text-gray-700">
-            <div className="flex items-center gap-2">
-              <MapPin size={16} />
-              <span>{tour.destination}</span>
+          <div className="space-y-3 mb-4 text-sm">
+            <div className="flex items-center gap-2 text-gray-700">
+              <Calendar size={16} className="text-blue-600" />
+              <span className="font-semibold">{tour.duration} Days</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Calendar size={16} />
-              <span>{tour.duration} days</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users size={16} />
-              <span>{availableSpots} spots available</span>
+            <div className="flex items-center gap-2 text-gray-700">
+              <Users size={16} className="text-blue-600" />
+              <span className="font-semibold">
+                {availableSpots > 0 ? `${availableSpots} spots left` : 'Fully Booked'}
+              </span>
             </div>
           </div>
+
+          {isUrgent && availableSpots > 0 && (
+            <div className="mb-4 p-2 bg-orange-50 border border-orange-200 rounded-lg flex items-center gap-2 text-orange-700 text-xs font-semibold">
+              <Flame size={14} />
+              Only {availableSpots} spot{availableSpots !== 1 ? 's' : ''} remaining!
+            </div>
+          )}
 
           <div className="flex items-center justify-between pt-4 border-t">
             <div className="flex items-center gap-1">
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
-              <span className="font-semibold text-gray-800">{tour.rating}</span>
-              <span className="text-gray-500 text-sm">({tour.reviews})</span>
+              <span className="font-bold text-gray-900">{tour.rating}</span>
+              <span className="text-gray-500 text-xs">({tour.reviews})</span>
             </div>
-            <span className="text-xs font-semibold text-blue-600 uppercase">View Details →</span>
+            <span className="text-xs font-bold text-blue-600 uppercase">View Details →</span>
           </div>
         </div>
       </div>

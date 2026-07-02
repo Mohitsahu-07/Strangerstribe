@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WanderlustTours - Explore the World",
-  description: "Discover curated travel experiences to the world's most beautiful destinations.",
+  title: "Strangers Tribe - Come Solo. Leave with a Tribe.",
+  description: "Explore Chopta, Kasol, Tosh, Manali, and Jibhi with the coolest travel community. Group trips, treks, and backpacking adventures for solo travelers.",
 };
 
 export default function RootLayout({
