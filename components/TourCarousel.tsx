@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Tour } from '@/lib/types';
+import BookingModal from './BookingModal';
 
 interface TourCarouselProps {
   tours: Tour[];
@@ -13,13 +14,26 @@ interface TourCarouselProps {
 export default function TourCarousel({ tours, title }: TourCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [selectedTourForBooking, setSelectedTourForBooking] = useState<Tour | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const handleOpenBooking = (tour: Tour) => {
+    setSelectedTourForBooking(tour);
+    setIsBookingModalOpen(true);
+  };
 
   useEffect(() => {
-    if (!isAutoPlay) return;
+    if (!isAutoPlay) {
+      // Resume autoplay after 12 seconds of user inactivity
+      const resumeTimer = setTimeout(() => {
+        setIsAutoPlay(true);
+      }, 12000);
+      return () => clearTimeout(resumeTimer);
+    }
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % tours.length);
-    }, 5000);
+    }, 2300);
 
     return () => clearInterval(interval);
   }, [isAutoPlay, tours.length]);
@@ -34,8 +48,6 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
     setIsAutoPlay(false);
   };
 
-  const currentTour = tours[currentIndex];
-
   return (
     <div className="space-y-8">
       <h2 className="text-4xl md:text-5xl font-black text-gray-900 px-4 md:px-0 animate-fade-in-left">
@@ -48,27 +60,32 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
         onMouseEnter={() => setIsAutoPlay(false)}
         onMouseLeave={() => setIsAutoPlay(true)}
       >
-        {/* Carousel Images */}
-        {tours.map((tour, idx) => (
-          <div
-            key={tour.id}
-            className={`absolute inset-0 transition-all duration-700 ease-out ${
-              idx === currentIndex
-                ? 'opacity-100 scale-100 z-10'
-                : 'opacity-0 scale-105 z-0'
-            }`}
-          >
-            <img
-              src={tour.image}
-              alt={tour.title}
-              className="w-full h-full object-cover"
-            />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        {/* Slides Track */}
+        <div
+          className="flex w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {tours.map((tour, idx) => (
+            <div
+              key={tour.id}
+              className="w-full h-full flex-shrink-0 relative"
+            >
+              <img
+                src={tour.image}
+                alt={tour.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-            {/* Carousel Content */}
-            {idx === currentIndex && (
-              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 text-white animate-fade-in-up">
+              {/* Carousel Content */}
+              <div
+                className={`absolute inset-0 flex flex-col justify-end p-6 md:p-12 text-white transition-all duration-700 ${
+                  idx === currentIndex
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 translate-y-8 pointer-events-none'
+                }`}
+              >
                 <h3 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
                   {tour.title}
                 </h3>
@@ -76,9 +93,12 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
                   {tour.description}
                 </p>
                 <div className="flex gap-4 flex-wrap">
-                  <span className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all btn-smooth">
+                  <button
+                    onClick={() => handleOpenBooking(tour)}
+                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all btn-smooth cursor-pointer text-left"
+                  >
                     ₹{tour.price.toLocaleString('en-IN')}
-                  </span>
+                  </button>
                   <Link
                     href={`/destinations/${tour.id}`}
                     className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-3 px-8 rounded-lg backdrop-blur transition-all btn-smooth"
@@ -87,20 +107,22 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
                   </Link>
                 </div>
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
 
         {/* Navigation Buttons */}
         <button
           onClick={handlePrev}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+          style={{ position: 'absolute' }}
         >
           <ChevronLeft size={24} />
         </button>
         <button
           onClick={handleNext}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+          style={{ position: 'absolute' }}
         >
           <ChevronRight size={24} />
         </button>
@@ -152,6 +174,14 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
           </button>
         ))}
       </div>
+
+      {selectedTourForBooking && (
+        <BookingModal
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          tour={selectedTourForBooking}
+        />
+      )}
     </div>
   );
 }

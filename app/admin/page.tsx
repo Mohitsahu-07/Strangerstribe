@@ -14,7 +14,7 @@ export default function AdminPage() {
     const fetchData = async () => {
       try {
         const [bookingsRes, toursRes] = await Promise.all([
-          fetch('/api/bookings'),
+          fetch('/api/bookings?all=true'),
           fetch('/api/destinations'),
         ]);
         setBookings(await bookingsRes.json());
@@ -38,7 +38,7 @@ export default function AdminPage() {
     );
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 space-y-8">
       <div className="flex items-center justify-between">
         <h1 className="text-4xl font-bold text-gray-900">Admin Dashboard</h1>
         <div className="text-sm text-gray-600">Welcome, Admin</div>
@@ -94,7 +94,14 @@ export default function AdminPage() {
                 <tr key={booking.id} className="border-b hover:bg-gray-50">
                   <td className="px-6 py-4 text-gray-900">{booking.customerName}</td>
                   <td className="px-6 py-4 text-gray-900">
-                    {tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold">{tours.find((t) => t.id === booking.tourId)?.title || 'Unknown'}</span>
+                      {booking.selectedPackage && (
+                        <span className="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded">
+                          {booking.selectedPackage}
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td className="px-6 py-4 text-gray-900">{booking.participants}</td>
                   <td className="px-6 py-4 text-gray-900 font-medium">₹{booking.totalPrice.toLocaleString('en-IN')}</td>

@@ -4,18 +4,47 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Booking, Tour } from '@/lib/types';
 import { Loader, Calendar, Users } from 'lucide-react';
+import { useUser } from '@clerk/nextjs';
 
 export default function BookingsPage() {
+  const { user, isLoaded } = useUser();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [tours, setTours] = useState<Tour[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isLoaded) return;
+
     const fetchData = async () => {
       try {
+        let url = '/api/bookings';
+        let localUser: { name: string; email: string; phone: string } | null = null;
+
+        if (typeof window !== 'undefined') {
+          const localData = localStorage.getItem('strangerstribe_user');
+          if (localData) {
+            try {
+              localUser = JSON.parse(localData);
+            } catch (e) {
+              console.error('Error parsing local user data', e);
+            }
+          }
+        }
+
+        const params = new URLSearchParams();
+        if (localUser) {
+          if (localUser.email) params.append('email', localUser.email);
+          if (localUser.phone) params.append('phone', localUser.phone);
+        }
+
+        const queryString = params.toString();
+        if (queryString) {
+          url += `?${queryString}`;
+        }
+
         const [bookingsRes, toursRes] = await Promise.all([
-          fetch('/api/bookings'),
-          fetch('/api/tours'),
+          fetch(url),
+          fetch('/api/destinations'),
         ]);
         setBookings(await bookingsRes.json());
         setTours(await toursRes.json());
@@ -24,7 +53,7 @@ export default function BookingsPage() {
       }
     };
     fetchData();
-  }, []);
+  }, [isLoaded, user]);
 
   const getTourTitle = (tourId: string) => {
     return tours.find((t) => t.id === tourId)?.title || 'Unknown Tour';
@@ -38,7 +67,7 @@ export default function BookingsPage() {
     );
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-5xl mx-auto px-6 md:px-12 pt-40 pb-16 space-y-8">
       <div>
         <h1 className="text-4xl font-bold text-gray-900 mb-2">My Bookings</h1>
         <p className="text-gray-600">View and manage your tour bookings</p>
@@ -57,7 +86,14 @@ export default function BookingsPage() {
             <div key={booking.id} className="bg-white rounded-lg shadow-md p-6">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">{getTourTitle(booking.tourId)}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">
+                    {getTourTitle(booking.tourId)}
+                    {booking.selectedPackage && (
+                      <span className="ml-3 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-md align-middle">
+                        {booking.selectedPackage}
+                      </span>
+                    )}
+                  </h3>
                 </div>
                 <span
                   className={`px-4 py-1 rounded-full font-semibold text-white ${

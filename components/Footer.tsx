@@ -8,9 +8,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           {/* Brand block */}
           <div className="space-y-4">
-            <h3 className="font-display font-semibold text-2xl text-white tracking-tight">
-              Strangers Tribe
-            </h3>
+            <div className="flex items-center gap-3">
+              <img src="/logo.jpg" alt="Strangers Tribe Logo" className="w-10 h-10 rounded-full object-cover border border-white/10" />
+              <h3 className="font-display font-semibold text-2xl text-white tracking-tight">
+                Strangers Tribe
+              </h3>
+            </div>
             <p className="text-sm leading-relaxed text-[#FAF6F2]/65 font-light">
               Don&apos;t find holidays to travel. Join curated group adventures across India&apos;s most breathtaking landscapes. Come Solo, Leave with a Tribe.
             </p>
@@ -24,7 +27,7 @@ export default function Footer() {
                 WhatsApp
               </a>
               <a 
-                href="https://instagram.com/strangers_tribe" 
+                href="https://www.instagram.com/strangers_tribe?igsh=azQ2cnAxajUxaTZ5" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-[#FF4B38]/10 hover:bg-[#FF4B38]/20 border border-[#FF4B38]/20 text-[#FF6C5C] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-colors"
@@ -65,23 +68,23 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm font-light">
               <li>
-                <Link href="/destinations/chopta-tungnath" className="hover:text-white transition-colors">
+                <Link href="/destinations/1" className="hover:text-white transition-colors">
                   Chopta & Tungnath Trek
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/kasol-tosh" className="hover:text-white transition-colors">
+                <Link href="/destinations/2" className="hover:text-white transition-colors">
                   Kasol & Tosh Expedition
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/manali-kasol" className="hover:text-white transition-colors">
-                  Manali & Kasol Escape
+                <Link href="/destinations/4" className="hover:text-white transition-colors">
+                  Manali
                 </Link>
               </li>
               <li>
-                <Link href="/destinations/hidden-himachal" className="hover:text-white transition-colors">
-                  Hidden Himachal
+                <Link href="/destinations/3" className="hover:text-white transition-colors">
+                  Jibhi
                 </Link>
               </li>
             </ul>
@@ -103,7 +106,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Mail size={16} className="text-[#FF4B38] mt-0.5 flex-shrink-0" />
-                <span>Email: contact@strangerstribe.com</span>
+                <span>Email: strangerstribe@gmail.com</span>
               </li>
             </ul>
           </div>

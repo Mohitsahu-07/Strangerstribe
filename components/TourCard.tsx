@@ -1,62 +1,79 @@
 import { Tour } from '@/lib/types';
 import Link from 'next/link';
-import { Star, Users, Calendar, Flame } from 'lucide-react';
+import { Star, Calendar, Users } from 'lucide-react';
 
 export default function TourCard({ tour }: { tour: Tour }) {
-  const availableSpots = tour.maxParticipants - tour.currentParticipants;
-  const isUrgent = availableSpots <= 3;
+  const nights = tour.duration - 1;
 
   return (
-    <Link href={`/destinations/${tour.id}`}>
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-gray-100 group card-hover">
-        <div className="relative h-56 overflow-hidden bg-gray-200 image-hover">
-          <img
-            src={tour.image}
-            alt={tour.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute top-0 right-0 bg-slate-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-bl-lg text-sm font-bold">
-            ₹{tour.price.toLocaleString('en-IN')}
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-            <p className="text-white font-bold text-lg">{tour.destination}</p>
-          </div>
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 group card-hover">
+      {/* Image Section */}
+      <div className="relative h-56 overflow-hidden bg-gray-200 image-hover">
+        <img
+          src={tour.image}
+          alt={tour.title}
+          className="w-full h-full object-cover"
+        />
+
+        {/* Price Badge */}
+        <div className="absolute top-3 left-3 bg-[#FF4B38] text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg">
+          ₹{tour.price.toLocaleString('en-IN')}
+          {tour.originalPrice && (
+            <span className="ml-1.5 text-white/70 line-through text-xs font-normal">
+              ₹{tour.originalPrice.toLocaleString('en-IN')}
+            </span>
+          )}
         </div>
 
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">{tour.title}</h3>
-          <p className="text-gray-600 text-sm mb-4 line-clamp-2">{tour.description}</p>
-
-          <div className="space-y-3 mb-4 text-sm">
-            <div className="flex items-center gap-2 text-gray-700">
-              <Calendar size={16} className="text-blue-600" />
-              <span className="font-semibold">{tour.duration} Days</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <Users size={16} className="text-blue-600" />
-              <span className="font-semibold">
-                {availableSpots > 0 ? `${availableSpots} spots left` : 'Fully Booked'}
-              </span>
-            </div>
-          </div>
-
-          {isUrgent && availableSpots > 0 && (
-            <div className="mb-4 p-2 bg-orange-50 border border-orange-200 rounded-lg flex items-center gap-2 text-orange-700 text-xs font-semibold">
-              <Flame size={14} />
-              Only {availableSpots} spot{availableSpots !== 1 ? 's' : ''} remaining!
-            </div>
-          )}
-
-          <div className="flex items-center justify-between pt-4 border-t">
-            <div className="flex items-center gap-1">
-              <Star size={16} className="text-yellow-400 fill-yellow-400" />
-              <span className="font-bold text-gray-900">{tour.rating}</span>
-              <span className="text-gray-500 text-xs">({tour.reviews})</span>
-            </div>
-            <span className="text-xs font-bold text-blue-600 uppercase">View Details →</span>
+        {/* Bottom Overlay Badges */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex items-end justify-between">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-md">
+              <Calendar size={12} />
+              {tour.duration} Days, {nights} Night{nights !== 1 ? 's' : ''}
+            </span>
+            <span className="flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-md">
+              <Users size={12} />
+              {tour.tripType}
+            </span>
           </div>
         </div>
       </div>
-    </Link>
+
+      {/* Content Section */}
+      <div className="p-5">
+        <h3 className="text-lg font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition line-clamp-1">
+          {tour.title}
+        </h3>
+
+        {/* Star Rating */}
+        <div className="flex items-center gap-1 mb-3">
+          {Array(5).fill(0).map((_, i) => (
+            <Star
+              key={i}
+              size={14}
+              className={i < Math.round(tour.rating) ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-200 text-gray-200'}
+            />
+          ))}
+          <span className="text-xs text-gray-500 ml-1">({tour.reviews})</span>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+          <Link
+            href={`/destinations/${tour.id}`}
+            className="text-sm font-bold text-[#FF4B38] hover:text-[#e0432f] transition-colors"
+          >
+            Read More
+          </Link>
+          <Link
+            href={`/destinations/${tour.id}`}
+            className="bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold px-5 py-2 rounded-lg transition-colors"
+          >
+            Book Now
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -31,10 +33,12 @@ export default function RootLayout({
       className={`${outfit.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white">
-        <Header />
-        <main className="flex-1 max-w-[1500px] mx-auto w-full px-4 md:px-12 py-8">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <ClerkProvider dynamic>
+            <Header />
+            <main className="flex-1 w-full">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+        </ClerkProvider>
       </body>
     </html>
   );

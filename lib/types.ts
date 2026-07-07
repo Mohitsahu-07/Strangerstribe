@@ -1,3 +1,16 @@
+export interface ItineraryDay {
+  day: number;
+  title: string;
+  description: string;
+  activities: string[];
+}
+
+export interface PricingPackage {
+  name: string;
+  price: number;
+  originalPrice?: number;
+}
+
 export interface Tour {
   id: string;
   title: string;
@@ -5,6 +18,7 @@ export interface Tour {
   destination: string;
   duration: number;
   price: number;
+  originalPrice?: number;
   maxParticipants: number;
   currentParticipants: number;
   image: string;
@@ -12,10 +26,18 @@ export interface Tour {
   endDate: string;
   highlights: string[];
   inclusions: string[];
+  itinerary: ItineraryDay[];
   difficulty: 'easy' | 'moderate' | 'hard';
+  tripType: 'Group' | 'Solo' | 'Corporate';
   rating: number;
   reviews: number;
   spotsLeft?: number;
+  staticPdf?: string;
+  exclusions?: string[];
+  thingsToCarry?: string[];
+  safetyGuidelines?: string[];
+  rulesAndPolicies?: string[];
+  pricingPackages?: PricingPackage[];
 }
 
 export interface Booking {
@@ -29,6 +51,7 @@ export interface Booking {
   customerName: string;
   customerEmail: string;
   customerPhone: string;
+  selectedPackage?: string;
 }
 
 export interface User {

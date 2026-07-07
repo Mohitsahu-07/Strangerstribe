@@ -1,11 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Star, Users, Calendar, Flame, Loader, Filter } from 'lucide-react';
+import { Loader, Filter } from 'lucide-react';
 import { Tour } from '@/lib/types';
 import TourCard from '@/components/TourCard';
-import ScrollReveal from '@/components/ScrollReveal';
 
 export default function DestinationsPage() {
   const [tours, setTours] = useState<Tour[]>([]);
@@ -34,7 +32,7 @@ export default function DestinationsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white pt-32 pb-16">
+    <div className="min-h-screen bg-white pt-40 pb-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-down">
