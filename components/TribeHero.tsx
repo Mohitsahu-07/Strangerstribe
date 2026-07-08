@@ -160,7 +160,7 @@ export default function TribeHero() {
   };
 
   return (
-    <div className="relative w-full min-h-[680px] md:h-[750px] lg:h-[800px] bg-[#121212] overflow-hidden flex flex-col justify-between pt-36">
+    <div className="relative w-full min-h-[520px] md:min-h-[680px] md:h-[750px] lg:h-[800px] bg-[#121212] overflow-hidden flex flex-col justify-between pt-28 md:pt-36">
       
       {/* Dynamic Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
@@ -175,7 +175,7 @@ export default function TribeHero() {
       </div>
 
       {/* Main Hero Content Area */}
-      <div className="relative z-10 w-full px-6 md:px-12 flex-1 flex items-center">
+      <div className="relative z-10 w-full px-4 md:px-12 flex-1 flex items-center">
         <div className="max-w-[1500px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Heading and Details */}
@@ -186,7 +186,7 @@ export default function TribeHero() {
               </span>
             )}
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase select-none transition-all duration-700 font-display drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase select-none transition-all duration-700 font-display drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
               {currentSlide.title}
             </h1>
 
@@ -194,10 +194,10 @@ export default function TribeHero() {
               {currentSlide.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 pt-4">
+            <div className="flex flex-wrap items-center gap-3 md:gap-6 pt-3 md:pt-4">
               <Link
                 href={currentSlide.exploreUrl}
-                className="group inline-flex items-center gap-2 bg-[#FF4B38] hover:bg-[#e0432f] text-white font-bold text-sm uppercase tracking-wider py-3.5 px-8 rounded-full shadow-[0_4px_20px_rgba(255,75,56,0.3)] transition-all duration-300 hover:scale-105 active:scale-95"
+                className="group inline-flex items-center gap-2 bg-[#FF4B38] hover:bg-[#e0432f] text-white font-bold text-xs md:text-sm uppercase tracking-wider py-3 px-6 md:py-3.5 md:px-8 rounded-full shadow-[0_4px_20px_rgba(255,75,56,0.3)] transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 <span>Explore</span>
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -226,7 +226,7 @@ export default function TribeHero() {
           </div>
 
           {/* Right Column: Tilted Overlay Cards Stack */}
-          <div className="lg:col-span-6 flex justify-center items-center py-6">
+          <div className="hidden md:flex lg:col-span-6 justify-center items-center py-6">
             <div className="relative w-[320px] h-[250px] md:w-[480px] md:h-[350px] select-none">
               
               {currentSlide.cards && currentSlide.cards.length >= 3 ? (
@@ -286,12 +286,12 @@ export default function TribeHero() {
       </div>
 
       {/* Translucent Bottom Stats Bar */}
-      <div className="relative z-10 w-full mt-12 bg-black/75 backdrop-blur-md border-t border-white/10 border-b border-white/5">
-        <div className="max-w-[1500px] mx-auto px-6 md:px-12 py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-6 gap-x-4 text-white items-center justify-items-center">
+      <div className="relative z-10 w-full mt-6 md:mt-12 bg-black/75 backdrop-blur-md border-t border-white/10 border-b border-white/5">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-12 py-4 md:py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 md:gap-y-6 gap-x-3 md:gap-x-4 text-white items-center justify-items-center">
           
           {/* Stat 1: Google Rating */}
-          <div className="flex items-center gap-3 w-full justify-center lg:justify-start lg:border-r lg:border-white/10 lg:pr-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+          <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:justify-start lg:border-r lg:border-white/10 lg:pr-4">
+            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"
@@ -313,54 +313,54 @@ export default function TribeHero() {
             </div>
             <div className="text-left">
               <div className="flex items-center gap-1">
-                <span className="font-extrabold text-lg leading-tight">4.9</span>
+                <span className="font-extrabold text-base md:text-lg leading-tight">4.9</span>
                 <Star size={16} className="fill-yellow-400 text-yellow-400" />
               </div>
-              <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Google Rating</p>
+              <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Google Rating</p>
             </div>
           </div>
 
           {/* Stat 2: Happy Reviews */}
-          <div className="flex items-center gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-              <Star className="w-5 h-5 text-[#FF4B38] fill-[#FF4B38]" />
+          <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
+            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38] fill-[#FF4B38]" />
             </div>
             <div className="text-left">
-              <span className="font-extrabold text-lg leading-none">2000+</span>
-              <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Happy Reviews</p>
+              <span className="font-extrabold text-base md:text-lg leading-none">2000+</span>
+              <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Happy Reviews</p>
             </div>
           </div>
 
           {/* Stat 3: Satisfied Travelers */}
-          <div className="flex items-center gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-              <Users className="w-5 h-5 text-[#FF4B38]" />
+          <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
+            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
+              <Users className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38]" />
             </div>
             <div className="text-left">
-              <span className="font-extrabold text-lg leading-none">10,000+</span>
-              <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Satisfied Travelers</p>
+              <span className="font-extrabold text-base md:text-lg leading-none">10,000+</span>
+              <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Travelers</p>
             </div>
           </div>
 
           {/* Stat 4: Years of Experience */}
-          <div className="flex items-center gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-[#FF4B38]" />
+          <div className="hidden md:flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
+            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
+              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38]" />
             </div>
             <div className="text-left">
-              <span className="font-extrabold text-lg leading-none">5+</span>
-              <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Years of Experience</p>
+              <span className="font-extrabold text-base md:text-lg leading-none">5+</span>
+              <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Years of Experience</p>
             </div>
           </div>
 
           {/* Stat 5: Trips Completed */}
-          <div className="flex items-center gap-3 w-full justify-center lg:justify-end">
-            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-              <Plane className="w-5 h-5 text-[#FF4B38] rotate-45" />
+          <div className="hidden md:flex items-center gap-2 md:gap-3 w-full justify-center lg:justify-end">
+            <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
+              <Plane className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38] rotate-45" />
             </div>
             <div className="text-left">
-              <span className="font-extrabold text-lg leading-none">1000+</span>
-              <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Trips Completed</p>
+              <span className="font-extrabold text-base md:text-lg leading-none">1000+</span>
+              <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Trips Completed</p>
             </div>
           </div>
 

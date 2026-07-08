@@ -335,6 +335,19 @@ html {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
+/* Disable aggressive hover on touch/mobile to prevent horizontal overflow */
+@media (max-width: 767px) {
+  .netflix-card:hover {
+    transform: scale(1.02) translateZ(0);
+    box-shadow: 0 10px 25px -6px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1);
+    box-shadow: 0 10px 25px -6px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .netflix-card:hover img {
   transform: scale(1.15);
   filter: brightness(1.1);
@@ -542,3 +555,25 @@ html {
 }
 
 
+/* ========== WHATSAPP PULSE ANIMATION ========== */
+
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========== MOBILE RESPONSIVE TWEAKS ========== */
+
+@media (max-width: 639px) {
+  /* Reduce marquee image sizes on very small screens */
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation-duration: 30s;
+  }
+}

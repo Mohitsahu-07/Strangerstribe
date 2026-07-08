@@ -80,7 +80,7 @@ export default function BookingForm({ tour, isModal = false }: BookingFormProps)
 
   if (success) {
     return (
-      <div className={isModal ? "text-center space-y-6 animate-scale-in" : "bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 sticky top-24 shadow-lg text-center space-y-6 animate-scale-in"}>
+      <div className={isModal ? "text-center space-y-6 animate-scale-in" : "bg-gradient-to-br from-blue-50 to-indigo-50 p-5 md:p-8 rounded-2xl border-2 border-blue-100 lg:sticky lg:top-24 shadow-lg text-center space-y-6 animate-scale-in"}>
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
           <CheckCircle size={32} className="text-green-600" />
         </div>
@@ -109,7 +109,7 @@ export default function BookingForm({ tour, isModal = false }: BookingFormProps)
   }
 
   return (
-    <form onSubmit={handleSubmit} className={isModal ? "animate-scale-in space-y-6" : "bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 sticky top-24 animate-slide-in-right shadow-lg"}>
+    <form onSubmit={handleSubmit} className={isModal ? "animate-scale-in space-y-6" : "bg-gradient-to-br from-blue-50 to-indigo-50 p-5 md:p-8 rounded-2xl border-2 border-blue-100 lg:sticky lg:top-24 animate-slide-in-right shadow-lg"}>
       <h3 className="text-3xl font-black mb-2 text-gray-900">Book Your Seat</h3>
       <p className="text-gray-600 mb-6 text-sm">Submit your details to check seat availability and secure your booking via WhatsApp.</p>
 

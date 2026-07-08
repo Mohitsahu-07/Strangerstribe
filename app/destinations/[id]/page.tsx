@@ -88,7 +88,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="w-full">
       {/* Hero Banner */}
-      <div className="relative w-full h-[450px] md:h-[550px]">
+      <div className="relative w-full h-[350px] md:h-[550px]">
         <img
           src={tour.image}
           alt={tour.title}
@@ -96,23 +96,23 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-          <h1 className="text-3xl md:text-5xl font-black leading-tight mb-4 animate-hero-fade max-w-4xl">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 md:px-6">
+          <h1 className="text-2xl md:text-5xl font-black leading-tight mb-3 md:mb-4 animate-hero-fade max-w-4xl">
             {tour.title}
           </h1>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 mb-6 animate-fade-in-up stagger-2">
+          <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 animate-fade-in-up stagger-2">
             <button
               onClick={handleGetItinerary}
-              className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-3 px-6 rounded-lg transition-all"
+              className="inline-flex items-center gap-1.5 md:gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white font-bold py-2.5 px-4 md:py-3 md:px-6 rounded-lg transition-all text-sm md:text-base"
             >
               <Download size={18} />
               Get Itinerary
             </button>
             <a
               href="#booking-section"
-              className="inline-flex items-center gap-2 bg-[#FF4B38] hover:bg-[#e0432f] text-white font-bold py-3 px-6 rounded-lg transition-all"
+              className="inline-flex items-center gap-1.5 md:gap-2 bg-[#FF4B38] hover:bg-[#e0432f] text-white font-bold py-2.5 px-4 md:py-3 md:px-6 rounded-lg transition-all text-sm md:text-base"
             >
               <ArrowRight size={18} />
               Book Now
@@ -120,17 +120,17 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
           </div>
 
           {/* Trip Info Bar */}
-          <div className="bg-white/15 backdrop-blur-md rounded-xl px-8 py-3 flex items-center gap-6 text-sm font-bold animate-fade-in-up stagger-3">
+          <div className="bg-white/15 backdrop-blur-md rounded-xl px-4 py-2 md:px-8 md:py-3 flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs md:text-sm font-bold animate-fade-in-up stagger-3">
             <span>{tour.duration} Days, {nights} Night{nights !== 1 ? 's' : ''}</span>
-            <span className="w-px h-5 bg-white/30" />
+            <span className="hidden md:inline-block w-px h-5 bg-white/30" />
             <span>₹{tour.price.toLocaleString('en-IN')}{tour.originalPrice ? <span className="ml-1 line-through text-white/50 font-normal text-xs">₹{tour.originalPrice.toLocaleString('en-IN')}</span> : ''}</span>
-            <span className="w-px h-5 bg-white/30" />
+            <span className="hidden md:inline-block w-px h-5 bg-white/30" />
             <span>Ex - {tour.destination.split('&')[0].trim()}</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 pb-16">
         {/* Back Link */}
         <div className="mt-8 animate-fade-in-down">
           <Link href="/destinations" className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 btn-smooth">
@@ -147,20 +147,20 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
           </div>
 
           {/* Trip Dashboard */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border-2 border-blue-100 animate-fade-in-up stagger-2">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 md:p-8 rounded-2xl border-2 border-blue-100 animate-fade-in-up stagger-2">
             <h3 className="text-2xl font-black mb-6 text-gray-900">Trip Details</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-wide">Duration</p>
-                <p className="text-3xl font-black text-gray-900">{tour.duration} <span className="text-lg">Days</span></p>
+                <p className="text-2xl md:text-3xl font-black text-gray-900">{tour.duration} <span className="text-base md:text-lg">Days</span></p>
               </div>
               <div className="space-y-2">
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-wide">Difficulty</p>
-                <p className="text-2xl font-black text-blue-600 capitalize">{tour.difficulty}</p>
+                <p className="text-xl md:text-2xl font-black text-blue-600 capitalize">{tour.difficulty}</p>
               </div>
               <div className="space-y-2">
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-wide">Group Size</p>
-                <p className="text-2xl font-black text-gray-900">Max {tour.maxParticipants}</p>
+                <p className="text-xl md:text-2xl font-black text-gray-900">Max {tour.maxParticipants}</p>
               </div>
               <div className="space-y-2">
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-wide">Start Date</p>
@@ -173,41 +173,14 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
               <div className="space-y-2">
                 <p className="text-gray-600 text-xs font-bold uppercase tracking-wide">Rating</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-black text-yellow-500">★ {tour.rating}</span>
+                  <span className="text-xl md:text-2xl font-black text-yellow-500">★ {tour.rating}</span>
                   <span className="text-sm text-gray-600">({tour.reviews} reviews)</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Pricing Packages Card */}
-          {tour.pricingPackages && tour.pricingPackages.length > 0 && (
-            <div className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 p-8 rounded-2xl text-white shadow-xl animate-fade-in-up mt-8">
-              <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
-                💰 Pricing Options & Packages
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {tour.pricingPackages.map((pkg) => (
-                  <div key={pkg.name} className="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-xl flex items-center justify-between">
-                    <div>
-                      <p className="font-black text-lg">{pkg.name}</p>
-                      {pkg.originalPrice && (
-                        <p className="text-xs text-white/60 font-bold uppercase tracking-wide">
-                          Save ₹{(pkg.originalPrice - pkg.price).toLocaleString('en-IN')}!
-                        </p>
-                      )}
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-black text-yellow-400 font-display">₹{pkg.price.toLocaleString('en-IN')}</p>
-                      {pkg.originalPrice && (
-                        <p className="text-xs text-white/50 line-through">₹{pkg.originalPrice.toLocaleString('en-IN')}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+
 
           {/* Day-by-Day Itinerary */}
           {tour.itinerary && tour.itinerary.length > 0 && (
@@ -252,7 +225,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
 
           {/* Highlights & Inclusions */}
           <div className="grid md:grid-cols-2 gap-8 animate-fade-in-up stagger-3">
-            <div className="bg-blue-50 p-8 rounded-2xl border-2 border-blue-100">
+            <div className="bg-blue-50 p-5 md:p-8 rounded-2xl border-2 border-blue-100">
               <h3 className="font-black text-xl text-blue-900 mb-6 flex items-center gap-2">
                 <TrendingUp className="text-blue-600" />
                 Highlights
@@ -266,7 +239,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
                 ))}
               </ul>
             </div>
-            <div className="bg-emerald-50 p-8 rounded-2xl border-2 border-emerald-100">
+            <div className="bg-emerald-50 p-5 md:p-8 rounded-2xl border-2 border-emerald-100">
               <h3 className="font-black text-xl text-emerald-900 mb-6 flex items-center gap-2">
                 <CheckCircle className="text-emerald-600" />
                 What&apos;s Included
@@ -286,7 +259,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
           {(tour.exclusions || tour.thingsToCarry) && (
             <div className="grid md:grid-cols-2 gap-8 animate-fade-in-up mt-8">
               {tour.exclusions && tour.exclusions.length > 0 && (
-                <div className="bg-rose-50 p-8 rounded-2xl border-2 border-rose-105">
+                <div className="bg-rose-50 p-5 md:p-8 rounded-2xl border-2 border-rose-105">
                   <h3 className="font-black text-xl text-rose-900 mb-6 flex items-center gap-2">
                     <XCircle className="text-rose-600" />
                     Exclusions / What&apos;s Not Included
@@ -302,7 +275,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
                 </div>
               )}
               {tour.thingsToCarry && tour.thingsToCarry.length > 0 && (
-                <div className="bg-amber-50 p-8 rounded-2xl border-2 border-amber-105">
+                <div className="bg-amber-50 p-5 md:p-8 rounded-2xl border-2 border-amber-105">
                   <h3 className="font-black text-xl text-amber-900 mb-6 flex items-center gap-2">
                     <Briefcase className="text-amber-600" />
                     Things to Carry
@@ -321,7 +294,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
           )}
 
           {/* Why This Trip */}
-          <div className="bg-orange-50 p-8 rounded-2xl border-2 border-orange-100 animate-fade-in-up stagger-4">
+          <div className="bg-orange-50 p-5 md:p-8 rounded-2xl border-2 border-orange-100 animate-fade-in-up stagger-4">
             <h3 className="font-black text-2xl text-gray-900 mb-4">Why You&apos;ll Love This Trip</h3>
             <ul className="space-y-3 text-gray-700">
               <li className="flex gap-3">
@@ -350,7 +323,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
 
           {/* Safety Guidelines */}
           {tour.safetyGuidelines && tour.safetyGuidelines.length > 0 && (
-            <div className="bg-indigo-50 p-8 rounded-2xl border-2 border-indigo-105 animate-fade-in-up mt-8">
+            <div className="bg-indigo-50 p-5 md:p-8 rounded-2xl border-2 border-indigo-105 animate-fade-in-up mt-8">
               <h3 className="font-black text-2xl text-indigo-900 mb-6 flex items-center gap-2">
                 <ShieldAlert className="text-indigo-600" />
                 Safety Guidelines
@@ -368,7 +341,7 @@ export default function TourDetailPage({ params }: { params: Promise<{ id: strin
 
           {/* Rules & Policies */}
           {tour.rulesAndPolicies && tour.rulesAndPolicies.length > 0 && (
-            <div className="bg-slate-50 p-8 rounded-2xl border-2 border-slate-200 animate-fade-in-up mt-8">
+            <div className="bg-slate-50 p-5 md:p-8 rounded-2xl border-2 border-slate-200 animate-fade-in-up mt-8">
               <h3 className="font-black text-2xl text-slate-900 mb-6 flex items-center gap-2">
                 <Scale className="text-slate-700" />
                 Rules & Policies

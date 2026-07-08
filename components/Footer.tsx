@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1410] text-[#FAF6F2]/75 border-t border-[#FF4B38]/15 py-16 px-6 md:px-12 mt-20">
+    <footer className="bg-[#1A1410] text-[#FAF6F2]/75 border-t border-[#FF4B38]/15 py-10 md:py-16 px-4 md:px-12 mt-12 md:mt-20">
       <div className="max-w-[1500px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-12">
           {/* Brand block */}
-          <div className="space-y-4">
+          <div className="space-y-4 col-span-2 md:col-span-1">
             <div className="flex items-center gap-3">
               <img src="/logo.jpg" alt="Strangers Tribe Logo" className="w-10 h-10 rounded-full object-cover border border-white/10" />
               <h3 className="font-display font-semibold text-2xl text-white tracking-tight">
@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         {/* Copy bar */}
-        <div className="border-t border-[#FAF6F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-[#FAF6F2]/45">
+        <div className="border-t border-[#FAF6F2]/10 pt-6 md:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4 text-xs font-light text-[#FAF6F2]/45">
           <p>&copy; 2026 Strangers Tribe community. All rights reserved.</p>
           <p className="tracking-wider uppercase">Come Solo. Leave with a Tribe.</p>
         </div>

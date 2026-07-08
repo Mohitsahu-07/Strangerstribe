@@ -67,9 +67,9 @@ export default function BookingsPage() {
     );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 md:px-12 pt-40 pb-16 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 md:px-12 pt-32 md:pt-40 pb-16 space-y-6 md:space-y-8">
       <div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">My Bookings</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">My Bookings</h1>
         <p className="text-gray-600">View and manage your tour bookings</p>
       </div>
 
@@ -83,10 +83,10 @@ export default function BookingsPage() {
       ) : (
         <div className="space-y-4">
           {bookings.map((booking) => (
-            <div key={booking.id} className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex justify-between items-start mb-4">
+            <div key={booking.id} className="bg-white rounded-lg shadow-md p-4 md:p-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-lg md:text-2xl font-bold text-gray-900">
                     {getTourTitle(booking.tourId)}
                     {booking.selectedPackage && (
                       <span className="ml-3 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-md align-middle">
@@ -108,7 +108,7 @@ export default function BookingsPage() {
                 </span>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
                 <div className="flex items-start gap-3">
                   <Calendar className="text-blue-600 mt-1" size={20} />
                   <div>

@@ -90,14 +90,14 @@ export default function SnapshotsMarquee() {
   const lowerRow = [...LOWER_PHOTOS, ...LOWER_PHOTOS];
 
   return (
-    <section className="py-16 bg-white overflow-hidden w-full space-y-12">
+    <section className="py-10 md:py-16 bg-white overflow-hidden w-full space-y-8 md:space-y-12">
       {/* Header Info Block */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div className="text-left space-y-2">
           <span className="text-xs md:text-sm font-extrabold text-[#FF4B38] tracking-[0.2em] uppercase block">
             Our Moments
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 font-display">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 font-display">
             Snapshots of <span className="text-[#FF4B38]">StrangersTribe</span>
           </h2>
         </div>
@@ -109,7 +109,7 @@ export default function SnapshotsMarquee() {
       </div>
 
       {/* Infinite Scrolling Gallery Rows */}
-      <div className="space-y-6 select-none">
+      <div className="space-y-4 md:space-y-6 select-none">
         
         {/* Row 1: Sliding from Left to Right (Moves Right) */}
         <div className="relative w-full flex overflow-x-hidden">
@@ -117,7 +117,7 @@ export default function SnapshotsMarquee() {
             {upperRow.map((photo, index) => (
               <div
                 key={`upper-${photo.id}-${index}`}
-                className="w-[260px] h-[170px] md:w-[340px] md:h-[220px] rounded-[24px] overflow-hidden shadow-md flex-shrink-0 cursor-pointer transition-transform duration-500 hover:scale-[1.03] hover:shadow-xl border border-gray-100"
+                className="w-[200px] h-[130px] md:w-[340px] md:h-[220px] rounded-[16px] md:rounded-[24px] overflow-hidden shadow-md flex-shrink-0 cursor-pointer transition-transform duration-500 hover:scale-[1.03] hover:shadow-xl border border-gray-100"
               >
                 <img
                   src={photo.url}
@@ -136,7 +136,7 @@ export default function SnapshotsMarquee() {
             {lowerRow.map((photo, index) => (
               <div
                 key={`lower-${photo.id}-${index}`}
-                className="w-[260px] h-[170px] md:w-[340px] md:h-[220px] rounded-[24px] overflow-hidden shadow-md flex-shrink-0 cursor-pointer transition-transform duration-500 hover:scale-[1.03] hover:shadow-xl border border-gray-100"
+                className="w-[200px] h-[130px] md:w-[340px] md:h-[220px] rounded-[16px] md:rounded-[24px] overflow-hidden shadow-md flex-shrink-0 cursor-pointer transition-transform duration-500 hover:scale-[1.03] hover:shadow-xl border border-gray-100"
               >
                 <img
                   src={photo.url}

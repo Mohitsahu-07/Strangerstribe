@@ -56,7 +56,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
 
       {/* Main Carousel */}
       <div
-        className="relative w-full h-96 md:h-[500px] rounded-3xl overflow-hidden group"
+        className="relative w-full h-72 md:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden group"
         onMouseEnter={() => setIsAutoPlay(false)}
         onMouseLeave={() => setIsAutoPlay(true)}
       >
@@ -80,28 +80,28 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
 
               {/* Carousel Content */}
               <div
-                className={`absolute inset-0 flex flex-col justify-end p-6 md:p-12 text-white transition-all duration-700 ${
+                className={`absolute inset-0 flex flex-col justify-end p-4 md:p-12 text-white transition-all duration-700 ${
                   idx === currentIndex
                     ? 'opacity-100 translate-y-0 pointer-events-auto'
                     : 'opacity-0 translate-y-8 pointer-events-none'
                 }`}
               >
-                <h3 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                <h3 className="text-2xl md:text-5xl font-black mb-2 md:mb-3 leading-tight">
                   {tour.title}
                 </h3>
-                <p className="text-lg md:text-xl mb-6 text-gray-200 max-w-2xl line-clamp-2">
+                <p className="text-sm md:text-xl mb-4 md:mb-6 text-gray-200 max-w-2xl line-clamp-2">
                   {tour.description}
                 </p>
                 <div className="flex gap-4 flex-wrap">
                   <button
                     onClick={() => handleOpenBooking(tour)}
-                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all btn-smooth cursor-pointer text-left"
+                    className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-5 md:py-3 md:px-8 rounded-lg transition-all btn-smooth cursor-pointer text-left text-sm md:text-base"
                   >
                     ₹{tour.price.toLocaleString('en-IN')}
                   </button>
                   <Link
                     href={`/destinations/${tour.id}`}
-                    className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-3 px-8 rounded-lg backdrop-blur transition-all btn-smooth"
+                    className="inline-block bg-white/20 hover:bg-white/30 text-white font-bold py-2.5 px-5 md:py-3 md:px-8 rounded-lg backdrop-blur transition-all btn-smooth text-sm md:text-base"
                   >
                     Explore →
                   </Link>
@@ -114,17 +114,17 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
         {/* Navigation Buttons */}
         <button
           onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-2 md:p-3 rounded-full transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 btn-smooth"
           style={{ position: 'absolute' }}
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} />
         </button>
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-3 rounded-full transition-all opacity-0 group-hover:opacity-100 btn-smooth"
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur text-white p-2 md:p-3 rounded-full transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 btn-smooth"
           style={{ position: 'absolute' }}
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={20} />
         </button>
 
         {/* Carousel Indicators */}
@@ -147,7 +147,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
       </div>
 
       {/* Thumbnail Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 md:px-0">
+      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 px-2 md:px-0">
         {tours.map((tour, idx) => (
           <button
             key={tour.id}
@@ -155,7 +155,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
               setCurrentIndex(idx);
               setIsAutoPlay(false);
             }}
-            className={`netflix-card relative group rounded-2xl overflow-hidden h-40 cursor-pointer animate-scale-in ${`stagger-${(idx % 5) + 1}`}`}
+            className={`netflix-card relative group rounded-xl md:rounded-2xl overflow-hidden h-24 md:h-40 cursor-pointer animate-scale-in ${`stagger-${(idx % 5) + 1}`}`}
           >
             <img
               src={tour.image}

@@ -2,30 +2,46 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X } from 'lucide-react';
 import { Show, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* Top Contact Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[120] bg-[#1A1410] text-white/90 text-xs py-2 px-6 md:px-12">
+      <div className="fixed top-0 left-0 right-0 z-[120] bg-[#1A1410] text-white/90 text-xs py-2 px-4 md:px-12">
         <div className="max-w-[1500px] mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href="tel:+918953680695" className="flex items-center gap-1.5 hover:text-[#FF4B38] transition-colors">
+          <div className="flex items-center gap-3 md:gap-6 overflow-hidden">
+            <a href="tel:+918953680695" className="flex items-center gap-1 md:gap-1.5 hover:text-[#FF4B38] transition-colors flex-shrink-0">
               <Phone size={12} />
-              <span>+91 8953680695</span>
+              <span className="hidden sm:inline">+91 8953680695</span>
+              <span className="sm:hidden">Call</span>
             </a>
-            <a href="mailto:strangerstribe@gmail.com" className="flex items-center gap-1.5 hover:text-[#FF4B38] transition-colors">
+            <a href="mailto:strangerstribe@gmail.com" className="hidden sm:flex items-center gap-1.5 hover:text-[#FF4B38] transition-colors">
               <Mail size={12} />
-              <span>strangerstribe@gmail.com</span>
+              <span className="hidden md:inline">strangerstribe@gmail.com</span>
+              <span className="md:hidden">Email</span>
             </a>
-            <span className="hidden md:flex items-center gap-1.5">
+            <span className="hidden lg:flex items-center gap-1.5">
               <MapPin size={12} />
               <span>Jhansi, Uttar Pradesh, India</span>
             </span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
             <a
               href="https://www.instagram.com/strangers_tribe?igsh=azQ2cnAxajUxaTZ5"
               target="_blank"
@@ -55,13 +71,15 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <header className="fixed top-[36px] left-0 right-0 z-[110] py-5 px-6 md:px-12 bg-slate-950/90 backdrop-blur-md border-b border-slate-900 shadow-lg">
+      <header className="fixed top-[36px] left-0 right-0 z-[110] py-3 md:py-5 px-4 md:px-12 bg-slate-950/90 backdrop-blur-md border-b border-slate-900 shadow-lg">
         <div className="max-w-[1500px] mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 font-display font-semibold text-2xl text-white tracking-tight">
-            <img src="/logo.jpg" alt="Strangers Tribe Logo" className="w-10 h-10 rounded-full object-cover border border-white/20" />
+          <Link href="/" className="flex items-center gap-2 md:gap-3 font-display font-semibold text-lg md:text-2xl text-white tracking-tight" onClick={() => setMobileMenuOpen(false)}>
+            <img src="/logo.jpg" alt="Strangers Tribe Logo" className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border border-white/20" />
             <span>Strangers Tribe</span>
           </Link>
-          <nav className="flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-white/95">
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-white/95">
             <Link href="/destinations" className="hover:text-[#FF4B38] transition-colors py-1">
               Destinations
             </Link>
@@ -88,8 +106,80 @@ export default function Header() {
               Book Now
             </Link>
           </nav>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-white p-2 -mr-2 relative z-[130]"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[105] md:hidden" onClick={() => setMobileMenuOpen(false)}>
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+          {/* Menu Panel */}
+          <div
+            className="absolute top-[96px] left-0 right-0 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <nav className="flex flex-col px-6 py-6 space-y-1">
+              <Link
+                href="/destinations"
+                className="text-white/90 hover:text-[#FF4B38] text-sm font-semibold uppercase tracking-widest py-3 border-b border-white/10 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Destinations
+              </Link>
+              <Link
+                href="/enquiry"
+                className="text-white/90 hover:text-[#FF4B38] text-sm font-semibold uppercase tracking-widest py-3 border-b border-white/10 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+
+              <Show when="signed-out">
+                <Link
+                  href="/sign-in"
+                  className="text-white/90 hover:text-[#FF4B38] text-sm font-semibold uppercase tracking-widest py-3 border-b border-white/10 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign In
+                </Link>
+              </Show>
+
+              <Show when="signed-in">
+                <Link
+                  href="/bookings"
+                  className="text-white/90 hover:text-[#FF4B38] text-sm font-semibold uppercase tracking-widest py-3 border-b border-white/10 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  My Bookings
+                </Link>
+                <div className="flex items-center py-3 border-b border-white/10">
+                  <UserButton />
+                  <span className="text-white/70 text-xs ml-3 uppercase tracking-widest font-semibold">Account</span>
+                </div>
+              </Show>
+
+              <Link
+                href="/destinations"
+                className="mt-4 bg-[#FF4B38] hover:bg-[#e0432f] text-white text-center font-bold py-3.5 px-6 rounded-lg transition-colors text-sm uppercase tracking-widest"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Book Now
+              </Link>
+            </nav>
+          </div>
+        </div>
+      )}
     </>
   );
 }

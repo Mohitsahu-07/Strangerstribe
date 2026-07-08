@@ -91,12 +91,12 @@ export default function EnquiryPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-40 pb-20 px-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
         <div className="max-w-lg mx-auto text-center animate-fade-in-up">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
             <CheckCircle size={48} className="text-green-600" />
           </div>
-          <h1 className="text-4xl font-black text-gray-900 mb-4">Enquiry Submitted!</h1>
+          <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">Enquiry Submitted!</h1>
           <p className="text-lg text-gray-600 mb-2">
             Thank you, <span className="font-bold text-blue-600">{formData.fullName}</span>!
           </p>
@@ -126,11 +126,11 @@ export default function EnquiryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-40 pb-20 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in-down">
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-3 md:mb-4">
             Get In Touch
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -141,13 +141,13 @@ export default function EnquiryPage() {
         <div className="grid lg:grid-cols-3 gap-10">
           {/* Form */}
           <div className="lg:col-span-2 animate-fade-in-left">
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-5 md:p-8 space-y-5 md:space-y-6">
               <h2 className="text-xl font-black text-gray-900 flex items-center gap-2">
                 <MessageSquare size={22} className="text-blue-600" />
                 Trip Enquiry Form
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 {/* Full Name */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Full Name *</label>
@@ -328,7 +328,7 @@ export default function EnquiryPage() {
           {/* Sidebar */}
           <div className="space-y-6 animate-fade-in-right">
             {/* Contact Info Card */}
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 md:p-8 text-white shadow-xl">
               <h3 className="text-xl font-black mb-6">Talk to Us Directly</h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-3">
@@ -362,7 +362,7 @@ export default function EnquiryPage() {
             </div>
 
             {/* Why Choose Us Card */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-8">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8">
               <h3 className="text-lg font-black text-gray-900 mb-4">Why Strangers Tribe?</h3>
               <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-start gap-2">
