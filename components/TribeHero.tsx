@@ -143,7 +143,6 @@ export default function TribeHero() {
 
   const currentSlide = HERO_SLIDES[slideIndex] || HERO_SLIDES[0];
 
-  // Autoplay functionality
   useEffect(() => {
     const interval = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
@@ -161,31 +160,24 @@ export default function TribeHero() {
 
   return (
     <div className="relative w-full min-h-[520px] md:min-h-[680px] md:h-[750px] lg:h-[800px] bg-[#121212] overflow-hidden flex flex-col justify-between pt-28 md:pt-36">
-      
-      {/* Dynamic Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src={currentSlide.bgImage}
           alt={currentSlide.title}
           className="w-full h-full object-cover transition-all duration-1000 ease-in-out scale-105 filter brightness-50 contrast-125"
         />
-        {/* Gradients to merge background with page content */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
       </div>
-
-      {/* Main Hero Content Area */}
       <div className="relative z-10 w-full px-4 md:px-12 flex-1 flex items-center">
         <div className="max-w-[1500px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Heading and Details */}
           <div className="lg:col-span-6 space-y-6 text-white text-left max-w-xl">
             {currentSlide.subtitle && (
               <span className="inline-block text-[#FF4B38] font-bold text-xs md:text-sm tracking-[0.25em] uppercase animate-fade-in-down">
                 {currentSlide.subtitle}
               </span>
             )}
-            
+
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase select-none transition-all duration-700 font-display drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
               {currentSlide.title}
             </h1>
@@ -202,8 +194,6 @@ export default function TribeHero() {
                 <span>Explore</span>
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-
-              {/* Slide Navigation Buttons */}
               {HERO_SLIDES.length > 1 && (
                 <div className="flex items-center gap-3">
                   <button
@@ -224,14 +214,11 @@ export default function TribeHero() {
               )}
             </div>
           </div>
-
-          {/* Right Column: Tilted Overlay Cards Stack */}
           <div className="hidden md:flex lg:col-span-6 justify-center items-center py-6">
             <div className="relative w-[320px] h-[250px] md:w-[480px] md:h-[350px] select-none">
-              
+
               {currentSlide.cards && currentSlide.cards.length >= 3 ? (
                 <>
-                  {/* Card 1 (Left Card - Rotated Counter Clockwise) */}
                   <div className="absolute left-[5%] top-[10%] w-[130px] h-[190px] md:w-[170px] md:h-[250px] bg-[#1a1410] border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out rotate-[-8deg] hover:rotate-0 hover:scale-110 hover:z-30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] origin-bottom z-10 group/card cursor-pointer">
                     <img
                       src={currentSlide.cards[0].image}
@@ -244,8 +231,6 @@ export default function TribeHero() {
                       </span>
                     </div>
                   </div>
-
-                  {/* Card 2 (Middle Card - Rotated Clockwise & Elevated) */}
                   <div className="absolute left-[33%] top-[2%] w-[130px] h-[190px] md:w-[170px] md:h-[250px] bg-[#1a1410] border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out rotate-[4deg] hover:rotate-0 hover:scale-110 hover:z-30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] origin-bottom z-20 group/card cursor-pointer">
                     <img
                       src={currentSlide.cards[1].image}
@@ -258,8 +243,6 @@ export default function TribeHero() {
                       </span>
                     </div>
                   </div>
-
-                  {/* Card 3 (Right Card - Rotated Counter Clockwise) */}
                   <div className="absolute left-[60%] top-[8%] w-[130px] h-[190px] md:w-[170px] md:h-[250px] bg-[#1a1410] border border-white/10 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out rotate-[-3deg] hover:rotate-0 hover:scale-110 hover:z-30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] origin-bottom z-10 group/card cursor-pointer">
                     <img
                       src={currentSlide.cards[2].image}
@@ -281,15 +264,10 @@ export default function TribeHero() {
 
             </div>
           </div>
-
         </div>
       </div>
-
-      {/* Translucent Bottom Stats Bar */}
       <div className="relative z-10 w-full mt-6 md:mt-12 bg-black/75 backdrop-blur-md border-t border-white/10 border-b border-white/5">
         <div className="max-w-[1500px] mx-auto px-4 md:px-12 py-4 md:py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 md:gap-y-6 gap-x-3 md:gap-x-4 text-white items-center justify-items-center">
-          
-          {/* Stat 1: Google Rating */}
           <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:justify-start lg:border-r lg:border-white/10 lg:pr-4">
             <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -319,8 +297,6 @@ export default function TribeHero() {
               <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Google Rating</p>
             </div>
           </div>
-
-          {/* Stat 2: Happy Reviews */}
           <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
             <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <Star className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38] fill-[#FF4B38]" />
@@ -330,8 +306,6 @@ export default function TribeHero() {
               <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Happy Reviews</p>
             </div>
           </div>
-
-          {/* Stat 3: Satisfied Travelers */}
           <div className="flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
             <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <Users className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38]" />
@@ -341,8 +315,6 @@ export default function TribeHero() {
               <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Travelers</p>
             </div>
           </div>
-
-          {/* Stat 4: Years of Experience */}
           <div className="hidden md:flex items-center gap-2 md:gap-3 w-full justify-center lg:border-r lg:border-white/10 lg:pr-4">
             <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38]" />
@@ -352,8 +324,6 @@ export default function TribeHero() {
               <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Years of Experience</p>
             </div>
           </div>
-
-          {/* Stat 5: Trips Completed */}
           <div className="hidden md:flex items-center gap-2 md:gap-3 w-full justify-center lg:justify-end">
             <div className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 flex items-center justify-center">
               <Plane className="w-4 h-4 md:w-5 md:h-5 text-[#FF4B38] rotate-45" />
@@ -363,13 +333,9 @@ export default function TribeHero() {
               <p className="text-[9px] md:text-[10px] text-gray-400 font-semibold tracking-wider uppercase mt-0.5">Trips Completed</p>
             </div>
           </div>
-
         </div>
-
-        {/* Thin bottom orange brand accent line */}
         <div className="w-full h-1.5 bg-[#FF4B38]" />
       </div>
-
     </div>
   );
 }

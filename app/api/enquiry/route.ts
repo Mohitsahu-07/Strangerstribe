@@ -5,11 +5,10 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const tripDetail = body.destination 
-      ? `Enquiry: ${body.destination}` 
+    const tripDetail = body.destination
+      ? `Enquiry: ${body.destination}`
       : 'General Enquiry';
 
-    // Append to Google Sheet
     appendToGoogleSheet({
       name: body.fullName,
       phone: body.phone,

@@ -5,11 +5,11 @@ import React, { useEffect, useRef, useState } from 'react';
 interface ScrollRevealProps {
   children: React.ReactNode;
   animation?: 'fade-up' | 'slide-left' | 'slide-right' | 'fade-in' | 'scale-up';
-  delay?: number; // Delay in milliseconds
-  duration?: number; // Duration in milliseconds
+  delay?: number;
+  duration?: number;
   className?: string;
-  threshold?: number; // Trigger threshold (0.0 to 1.0)
-  once?: boolean; // If true, animates only once
+  threshold?: number;
+  once?: boolean;
 }
 
 export default function ScrollReveal({
@@ -38,7 +38,7 @@ export default function ScrollReveal({
       },
       {
         threshold,
-        rootMargin: '0px 0px -60px 0px', // Triggers slightly before the element fully enters viewport
+        rootMargin: '0px 0px -60px 0px',
       }
     );
 
@@ -54,7 +54,6 @@ export default function ScrollReveal({
     };
   }, [threshold, once]);
 
-  // Initial styles before triggering animation
   const getInitialStyles = () => {
     switch (animation) {
       case 'fade-up':
@@ -71,7 +70,6 @@ export default function ScrollReveal({
     }
   };
 
-  // Active styles after element enters view
   const getActiveStyles = () => {
     switch (animation) {
       case 'fade-up':
@@ -91,7 +89,7 @@ export default function ScrollReveal({
     transitionProperty: 'opacity, transform',
     transitionDuration: `${duration}ms`,
     transitionDelay: `${delay}ms`,
-    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)', // Smooth easeOutExpo
+    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     willChange: 'transform, opacity',
     ...(isVisible ? getActiveStyles() : getInitialStyles()),
   };

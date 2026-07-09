@@ -50,17 +50,12 @@ const TESTIMONIALS = [
 export default function Home() {
   return (
     <div className="w-full">
-      {/* Premium Interactive Hero Banner */}
       <TribeHero />
-
-      {/* Featured Tours Carousel */}
       <div className="py-12 md:py-24 px-4 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <TourCarousel tours={mockTours} title="Featured Adventures" />
         </div>
       </div>
-
-      {/* Why Join Section */}
       <div id="why-choose-us" className="py-12 md:py-24 px-4 md:px-12 bg-gradient-to-br from-blue-50 to-indigo-50">
         <div className="max-w-7xl mx-auto space-y-10 md:space-y-16">
           <div className="text-center animate-fade-in-down">
@@ -71,7 +66,6 @@ export default function Home() {
               We&apos;re not just a travel company. We&apos;re a community building lifelong friendships.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
             {[
               {
@@ -116,10 +110,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* Real Traveler Moments - Infinite Slider */}
       <SnapshotsMarquee />
 
-      {/* Testimonials Section */}
       <div id="testimonials" className="py-12 md:py-24 px-4 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto space-y-10 md:space-y-16">
           <div className="text-center animate-fade-in-down">
@@ -130,7 +122,6 @@ export default function Home() {
               Real stories from real adventurers who started as strangers.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {TESTIMONIALS.map((testimonial, idx) => (
               <ScrollReveal key={idx} delay={idx * 100}>
@@ -156,8 +147,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* CTA Section */}
       <div className="py-12 md:py-24 px-4 md:px-12 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
           <h2 className="text-3xl md:text-6xl font-black leading-tight animate-hero-glow">

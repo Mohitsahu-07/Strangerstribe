@@ -20,7 +20,6 @@ export async function GET(request: Request) {
     }
 
     if (userId) {
-      // Find bookings for user
       const query: any = { userId };
       const bookings = await DbBooking.find(query);
       return NextResponse.json(bookings.map(serializeDoc));
@@ -34,9 +33,9 @@ export async function GET(request: Request) {
       if (phone) {
         conditions.push({ customerPhone: phone });
       }
-      
+
       if (conditions.length === 0) return NextResponse.json([]);
-      
+
       const bookings = await DbBooking.find({ $or: conditions });
       return NextResponse.json(bookings.map(serializeDoc));
     }
@@ -52,7 +51,7 @@ export async function POST(request: Request) {
   try {
     const { userId } = await auth();
     const body = await request.json();
-    
+
     await connectToDatabase();
 
     const createdBooking = await DbBooking.create({
@@ -68,13 +67,11 @@ export async function POST(request: Request) {
       selectedPackage: body.selectedPackage,
     });
 
-    // Fetch tour info for google sheet tripDetail field
     try {
       const tour = await DbTour.findById(body.tourId);
       const tourTitle = tour ? tour.title : body.tourId;
       const tripDetail = body.selectedPackage ? `${tourTitle} (${body.selectedPackage})` : tourTitle;
 
-      // Append in background
       appendToGoogleSheet({
         name: body.customerName,
         phone: body.customerPhone,

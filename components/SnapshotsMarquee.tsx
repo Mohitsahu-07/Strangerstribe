@@ -85,13 +85,11 @@ const LOWER_PHOTOS: Photo[] = [
 ];
 
 export default function SnapshotsMarquee() {
-  // Double the list to support seamless infinite scrolling marquee
   const upperRow = [...UPPER_PHOTOS, ...UPPER_PHOTOS];
   const lowerRow = [...LOWER_PHOTOS, ...LOWER_PHOTOS];
 
   return (
     <section className="py-10 md:py-16 bg-white overflow-hidden w-full space-y-8 md:space-y-12">
-      {/* Header Info Block */}
       <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
         <div className="text-left space-y-2">
           <span className="text-xs md:text-sm font-extrabold text-[#FF4B38] tracking-[0.2em] uppercase block">
@@ -107,11 +105,7 @@ export default function SnapshotsMarquee() {
           </p>
         </div>
       </div>
-
-      {/* Infinite Scrolling Gallery Rows */}
       <div className="space-y-4 md:space-y-6 select-none">
-        
-        {/* Row 1: Sliding from Left to Right (Moves Right) */}
         <div className="relative w-full flex overflow-x-hidden">
           <div className="flex gap-6 w-max animate-marquee-right py-2">
             {upperRow.map((photo, index) => (
@@ -129,8 +123,6 @@ export default function SnapshotsMarquee() {
             ))}
           </div>
         </div>
-
-        {/* Row 2: Sliding from Right to Left (Moves Left) */}
         <div className="relative w-full flex overflow-x-hidden">
           <div className="flex gap-6 w-max animate-marquee-left py-2">
             {lowerRow.map((photo, index) => (
@@ -148,7 +140,6 @@ export default function SnapshotsMarquee() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

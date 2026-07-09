@@ -6,7 +6,6 @@ export default function Footer() {
     <footer className="bg-[#1A1410] text-[#FAF6F2]/75 border-t border-[#FF4B38]/15 py-10 md:py-16 px-4 md:px-12 mt-12 md:mt-20">
       <div className="max-w-[1500px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-10 md:mb-12">
-          {/* Brand block */}
           <div className="space-y-4 col-span-2 md:col-span-1">
             <div className="flex items-center gap-3">
               <img src="/logo.jpg" alt="Strangers Tribe Logo" className="w-10 h-10 rounded-full object-cover border border-white/10" />
@@ -18,17 +17,17 @@ export default function Footer() {
               Don&apos;t find holidays to travel. Join curated group adventures across India&apos;s most breathtaking landscapes. Come Solo, Leave with a Tribe.
             </p>
             <div className="flex gap-3 pt-2">
-              <a 
-                href="https://wa.me/918953680695" 
-                target="_blank" 
+              <a
+                href="https://wa.me/918953680695"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-[#FF4B38]/10 hover:bg-[#FF4B38]/20 border border-[#FF4B38]/20 text-[#FF6C5C] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-colors"
               >
                 WhatsApp
               </a>
-              <a 
-                href="https://www.instagram.com/strangers_tribe?igsh=azQ2cnAxajUxaTZ5" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/strangers_tribe?igsh=azQ2cnAxajUxaTZ5"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-[#FF4B38]/10 hover:bg-[#FF4B38]/20 border border-[#FF4B38]/20 text-[#FF6C5C] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-colors"
               >
@@ -36,8 +35,6 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
-          {/* Quick links */}
           <div>
             <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#FF4B38] mb-6">
               Explore
@@ -60,8 +57,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Popular routes */}
           <div>
             <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#FF4B38] mb-6">
               Popular Trips
@@ -89,8 +84,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Contact block */}
           <div>
             <h4 className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#FF4B38] mb-6">
               Support
@@ -111,8 +104,6 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Copy bar */}
         <div className="border-t border-[#FAF6F2]/10 pt-6 md:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4 text-xs font-light text-[#FAF6F2]/45">
           <p>&copy; 2026 Strangers Tribe community. All rights reserved.</p>
           <p className="tracking-wider uppercase">Come Solo. Leave with a Tribe.</p>

@@ -27,19 +27,16 @@ body {
   font-family: var(--font-body);
 }
 
-/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* ========== NETFLIX-STYLE ANIMATIONS ========== */
-
-/* Hero Animations */
 @keyframes heroFadeIn {
   from {
     opacity: 0;
     transform: translateY(40px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -47,20 +44,23 @@ html {
 }
 
 @keyframes heroGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   }
+
   50% {
     text-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
   }
 }
 
-/* Fade animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -72,6 +72,7 @@ html {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -83,6 +84,7 @@ html {
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -94,18 +96,19 @@ html {
     opacity: 0;
     transform: translateX(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* Slide animations */
 @keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -117,17 +120,20 @@ html {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* Parallax animations */
 @keyframes parallaxFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) translateZ(0);
   }
+
   50% {
     transform: translateY(-20px) translateZ(0);
   }
@@ -137,17 +143,18 @@ html {
   from {
     transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
   }
+
   to {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
   }
 }
 
-/* Scale animations */
 @keyframes scaleIn {
   from {
     opacity: 0;
     transform: scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -158,86 +165,100 @@ html {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
 }
 
-/* Shimmer/Skeleton loading animation */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
 }
 
-/* Glow animation */
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.1);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.2);
   }
 }
 
-/* Bounce animations */
 @keyframes bounce-subtle {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes float-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-15px);
   }
 }
 
-/* Pulse animations */
 @keyframes pulse-soft {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
   }
+
   50% {
     opacity: 0.8;
     box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
   }
 }
 
-/* ========== NETFLIX-STYLE UTILITY CLASSES ========== */
-
-/* Hero animations */
 .animate-hero-fade {
   animation: heroFadeIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -246,7 +267,6 @@ html {
   animation: heroGlow 2s ease-in-out infinite;
 }
 
-/* Fade animations */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -263,7 +283,6 @@ html {
   animation: fadeInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Slide animations */
 .animate-slide-in-left {
   animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
@@ -272,12 +291,10 @@ html {
   animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Scale animations */
 .animate-scale-in {
   animation: scaleIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Float animations */
 .animate-float {
   animation: float 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -290,7 +307,6 @@ html {
   animation: bounce-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Pulse animations */
 .animate-pulse-soft {
   animation: pulse-soft 2s ease-in-out infinite;
 }
@@ -299,7 +315,6 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Staggered animations */
 .stagger-1 {
   animation-delay: 0.1s;
 }
@@ -324,7 +339,6 @@ html {
   animation-delay: 0.6s;
 }
 
-/* Netflix-style card hover */
 .netflix-card {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-origin: center;
@@ -335,7 +349,6 @@ html {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Disable aggressive hover on touch/mobile to prevent horizontal overflow */
 @media (max-width: 767px) {
   .netflix-card:hover {
     transform: scale(1.02) translateZ(0);
@@ -353,7 +366,6 @@ html {
   filter: brightness(1.1);
 }
 
-/* Card animations */
 .card-hover {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -363,7 +375,6 @@ html {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Netflix-style image hover */
 .image-hover {
   overflow: hidden;
   border-radius: 1rem;
@@ -384,7 +395,7 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -393,7 +404,6 @@ html {
   opacity: 1;
 }
 
-/* Smooth button transitions */
 .btn-smooth {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
@@ -424,7 +434,6 @@ html {
   transform: translateY(-1px);
 }
 
-/* Text gradient animation */
 .gradient-text {
   background: linear-gradient(90deg, #2563eb, #0ea5e9, #2563eb);
   background-size: 200% 100%;
@@ -435,27 +444,27 @@ html {
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% center;
   }
+
   50% {
     background-position: 100% center;
   }
 }
 
-/* Skeleton loader shimmer */
 .skeleton-shimmer {
   animation: shimmer 2s infinite;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
 }
 
-/* Glow effect */
 .glow-effect {
   animation: glow 3s ease-in-out infinite;
 }
 
-/* No scrollbar utility */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -465,7 +474,6 @@ html {
   display: none;
 }
 
-/* Text reveal animation */
 .text-reveal {
   position: relative;
   overflow: hidden;
@@ -486,17 +494,18 @@ html {
   from {
     left: 0;
   }
+
   to {
     left: 100%;
   }
 }
 
-/* ========== MODAL ANIMATIONS ========== */
 
 @keyframes modalBackdropIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -507,6 +516,7 @@ html {
     opacity: 0;
     transform: scale(0.9) translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -521,12 +531,11 @@ html {
   animation: modalContentIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* ========== INFINITE MARQUEE SLIDER ========== */
-
 @keyframes marquee-left {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -536,6 +545,7 @@ html {
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -554,24 +564,20 @@ html {
   animation-play-state: paused;
 }
 
-
-/* ========== WHATSAPP PULSE ANIMATION ========== */
-
 @keyframes whatsapp-pulse {
   0% {
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0;
   }
 }
 
-/* ========== MOBILE RESPONSIVE TWEAKS ========== */
-
 @media (max-width: 639px) {
-  /* Reduce marquee image sizes on very small screens */
+
   .animate-marquee-left,
   .animate-marquee-right {
     animation-duration: 30s;

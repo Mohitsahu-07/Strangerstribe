@@ -75,7 +75,6 @@ export default function EnquiryPage() {
         throw new Error('Failed to submit enquiry');
       }
 
-      // Save enquiry to localStorage
       const enquiries = JSON.parse(localStorage.getItem('strangerstribe_enquiries') || '[]');
       enquiries.push({ ...formData, submittedAt: new Date().toISOString(), id: Date.now().toString() });
       localStorage.setItem('strangerstribe_enquiries', JSON.stringify(enquiries));
@@ -128,7 +127,6 @@ export default function EnquiryPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 md:pt-40 pb-12 md:pb-20 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-12 animate-fade-in-down">
           <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-3 md:mb-4">
             Get In Touch
@@ -139,7 +137,6 @@ export default function EnquiryPage() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-10">
-          {/* Form */}
           <div className="lg:col-span-2 animate-fade-in-left">
             <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-5 md:p-8 space-y-5 md:space-y-6">
               <h2 className="text-xl font-black text-gray-900 flex items-center gap-2">
@@ -148,7 +145,6 @@ export default function EnquiryPage() {
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                {/* Full Name */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Full Name *</label>
                   <div className="relative">
@@ -159,15 +155,12 @@ export default function EnquiryPage() {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Your full name"
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${
-                        errors.fullName ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${errors.fullName ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
+                        }`}
                     />
                   </div>
                   {errors.fullName && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.fullName}</p>}
                 </div>
-
-                {/* Email */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Email Address *</label>
                   <div className="relative">
@@ -178,15 +171,12 @@ export default function EnquiryPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${
-                        errors.email ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${errors.email ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
+                        }`}
                     />
                   </div>
                   {errors.email && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.email}</p>}
                 </div>
-
-                {/* Phone */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Phone Number *</label>
                   <div className="relative">
@@ -197,15 +187,12 @@ export default function EnquiryPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${
-                        errors.phone ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none ${errors.phone ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
+                        }`}
                     />
                   </div>
                   {errors.phone && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.phone}</p>}
                 </div>
-
-                {/* Destination */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Destination *</label>
                   <div className="relative">
@@ -214,9 +201,8 @@ export default function EnquiryPage() {
                       name="destination"
                       value={formData.destination}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none appearance-none bg-no-repeat bg-[right_12px_center] bg-[length:16px] ${
-                        errors.destination ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none appearance-none bg-no-repeat bg-[right_12px_center] bg-[length:16px] ${errors.destination ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
+                        }`}
                       style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")` }}
                     >
                       <option value="">Select a destination</option>
@@ -230,8 +216,6 @@ export default function EnquiryPage() {
                   </div>
                   {errors.destination && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.destination}</p>}
                 </div>
-
-                {/* Travel Date */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Preferred Travel Date</label>
                   <div className="relative">
@@ -245,8 +229,6 @@ export default function EnquiryPage() {
                     />
                   </div>
                 </div>
-
-                {/* Group Size */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Group Size</label>
                   <div className="relative">
@@ -268,8 +250,6 @@ export default function EnquiryPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Budget */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                   <span className="flex items-center gap-1"><IndianRupee size={12} /> Budget Range (per person)</span>
@@ -280,19 +260,16 @@ export default function EnquiryPage() {
                       key={range}
                       type="button"
                       onClick={() => setFormData((prev) => ({ ...prev, budget: range }))}
-                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all border-2 ${
-                        formData.budget === range
+                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all border-2 ${formData.budget === range
                           ? 'bg-blue-600 text-white border-blue-600 shadow-md'
                           : 'bg-white text-gray-600 border-gray-200 hover:border-blue-400'
-                      }`}
+                        }`}
                     >
                       {range}
                     </button>
                   ))}
                 </div>
               </div>
-
-              {/* Message */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Special Requirements / Message</label>
                 <textarea
@@ -324,10 +301,7 @@ export default function EnquiryPage() {
               </button>
             </form>
           </div>
-
-          {/* Sidebar */}
           <div className="space-y-6 animate-fade-in-right">
-            {/* Contact Info Card */}
             <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 md:p-8 text-white shadow-xl">
               <h3 className="text-xl font-black mb-6">Talk to Us Directly</h3>
               <div className="space-y-5">
@@ -360,8 +334,6 @@ export default function EnquiryPage() {
                 </div>
               </div>
             </div>
-
-            {/* Why Choose Us Card */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-lg p-6 md:p-8">
               <h3 className="text-lg font-black text-gray-900 mb-4">Why Strangers Tribe?</h3>
               <ul className="space-y-3 text-sm text-gray-600">
@@ -387,8 +359,6 @@ export default function EnquiryPage() {
                 </li>
               </ul>
             </div>
-
-            {/* Response Time */}
             <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6 text-center">
               <p className="text-3xl mb-2">⚡</p>
               <p className="font-black text-gray-900">Quick Response</p>

@@ -7,15 +7,12 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
   return (
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 group card-hover">
-      {/* Image Section */}
       <div className="relative h-56 overflow-hidden bg-gray-200 image-hover">
         <img
           src={tour.image}
           alt={tour.title}
           className="w-full h-full object-cover"
         />
-
-        {/* Price Badge */}
         <div className="absolute top-3 left-3 bg-[#FF4B38] text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg">
           ₹{tour.price.toLocaleString('en-IN')}
           {tour.originalPrice && (
@@ -24,8 +21,6 @@ export default function TourCard({ tour }: { tour: Tour }) {
             </span>
           )}
         </div>
-
-        {/* Bottom Overlay Badges */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex items-end justify-between">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-md">
@@ -39,14 +34,10 @@ export default function TourCard({ tour }: { tour: Tour }) {
           </div>
         </div>
       </div>
-
-      {/* Content Section */}
       <div className="p-5">
         <h3 className="text-lg font-bold text-gray-900 mb-1.5 group-hover:text-blue-600 transition line-clamp-1">
           {tour.title}
         </h3>
-
-        {/* Star Rating */}
         <div className="flex items-center gap-1 mb-3">
           {Array(5).fill(0).map((_, i) => (
             <Star
@@ -57,8 +48,6 @@ export default function TourCard({ tour }: { tour: Tour }) {
           ))}
           <span className="text-xs text-gray-500 ml-1">({tour.reviews})</span>
         </div>
-
-        {/* Action Buttons */}
         <div className="flex items-center justify-between pt-3 border-t border-gray-100">
           <Link
             href={`/destinations/${tour.id}`}

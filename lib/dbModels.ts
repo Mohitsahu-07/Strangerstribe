@@ -55,6 +55,5 @@ const BookingSchema = new Schema({
   selectedPackage: { type: String }
 }, { timestamps: true });
 
-// Check if models exist, otherwise compile them
 export const DbTour = mongoose.models.DbTour || mongoose.model('DbTour', TourSchema);
 export const DbBooking = mongoose.models.DbBooking || mongoose.model('DbBooking', BookingSchema);

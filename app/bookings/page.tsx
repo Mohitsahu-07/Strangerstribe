@@ -32,10 +32,20 @@ export default function BookingsPage() {
         }
 
         const params = new URLSearchParams();
-        if (localUser) {
-          if (localUser.email) params.append('email', localUser.email);
-          if (localUser.phone) params.append('phone', localUser.phone);
+        let email = localUser?.email;
+        let phone = localUser?.phone;
+
+        if (user) {
+          if (user.primaryEmailAddress?.emailAddress) {
+            email = user.primaryEmailAddress.emailAddress;
+          }
+          if (user.primaryPhoneNumber?.phoneNumber) {
+            phone = user.primaryPhoneNumber.phoneNumber;
+          }
         }
+
+        if (email) params.append('email', email);
+        if (phone) params.append('phone', phone);
 
         const queryString = params.toString();
         if (queryString) {

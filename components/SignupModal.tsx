@@ -58,7 +58,6 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
 
     setIsSubmitting(true);
 
-    // Simulate a brief delay for UX
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     const userData = { name: name.trim(), email: email.trim(), phone: phone.trim(), signedUpAt: new Date().toISOString() };
@@ -78,15 +77,11 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" onClick={onClose}>
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm modal-backdrop-enter" />
-
-      {/* Modal */}
       <div
         className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl modal-content-enter overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Gradient */}
         <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 px-8 py-8 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -97,7 +92,6 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
           >
             <X size={22} />
           </button>
-
           <div className="relative z-10">
             <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center mb-4">
               <Download size={26} className="text-white" />
@@ -119,7 +113,6 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="px-8 py-6 space-y-5">
-            {/* Name Field */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                 Full Name
@@ -131,17 +124,14 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your full name"
-                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${
-                    errors.name
+                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${errors.name
                       ? 'border-red-300 bg-red-50 focus:border-red-500'
                       : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                  }`}
+                    }`}
                 />
               </div>
               {errors.name && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.name}</p>}
             </div>
-
-            {/* Email Field */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                 Email Address
@@ -153,17 +143,14 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${
-                    errors.email
+                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${errors.email
                       ? 'border-red-300 bg-red-50 focus:border-red-500'
                       : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                  }`}
+                    }`}
                 />
               </div>
               {errors.email && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.email}</p>}
             </div>
-
-            {/* Phone Field */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
                 Phone Number
@@ -175,11 +162,10 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+91 98765 43210"
-                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${
-                    errors.phone
+                  className={`w-full pl-11 pr-4 py-3 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-0 ${errors.phone
                       ? 'border-red-300 bg-red-50 focus:border-red-500'
                       : 'border-gray-200 bg-gray-50 focus:border-blue-500 focus:bg-white'
-                  }`}
+                    }`}
                 />
               </div>
               {errors.phone && <p className="text-red-500 text-xs mt-1 font-semibold">{errors.phone}</p>}

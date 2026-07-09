@@ -9,35 +9,22 @@ export function generateItineraryPDF(tour: Tour) {
   const contentWidth = pageWidth - margin * 2;
   let y = margin;
 
-  // ====== HEADER SECTION ======
-  // Blue header background
   doc.setFillColor(37, 99, 235);
   doc.rect(0, 0, pageWidth, 55, 'F');
-
-  // White accent line
   doc.setFillColor(255, 255, 255);
   doc.rect(0, 55, pageWidth, 2, 'F');
-
-  // Brand name
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
   doc.text('STRANGERS TRIBE', margin, 22);
-
-  // Tagline
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text('Come Solo. Leave with a Tribe.', margin, 30);
-
-  // Trip title in header
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   const titleLines = doc.splitTextToSize(tour.title, contentWidth);
   doc.text(titleLines, margin, 42);
-
   y = 65;
-
-  // ====== TRIP INFO BAR ======
   doc.setFillColor(245, 247, 250);
   doc.rect(margin, y, contentWidth, 22, 'F');
   doc.setDrawColor(220, 220, 220);
@@ -60,7 +47,6 @@ export function generateItineraryPDF(tour: Tour) {
     doc.text(item, margin + colWidth * idx + 4, infoY);
   });
 
-  // Difficulty & Type row
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 100, 100);
@@ -68,7 +54,6 @@ export function generateItineraryPDF(tour: Tour) {
 
   y += 30;
 
-  // ====== DESCRIPTION ======
   doc.setTextColor(30, 30, 30);
   doc.setFontSize(12);
   doc.setFont('helvetica', 'bold');
@@ -82,42 +67,33 @@ export function generateItineraryPDF(tour: Tour) {
   doc.text(descLines, margin, y);
   y += descLines.length * 4.5 + 6;
 
-  // ====== DAY-BY-DAY ITINERARY ======
   doc.setTextColor(37, 99, 235);
   doc.setFontSize(14);
   doc.setFont('helvetica', 'bold');
   doc.text('Day-by-Day Itinerary', margin, y);
   y += 3;
 
-  // Blue underline
   doc.setDrawColor(37, 99, 235);
   doc.setLineWidth(0.5);
   doc.line(margin, y, margin + 50, y);
   y += 8;
 
   tour.itinerary.forEach((day) => {
-    // Check if we need a new page
     if (y > pageHeight - 50) {
       doc.addPage();
       y = margin;
     }
-
-    // Day number badge
     doc.setFillColor(37, 99, 235);
     doc.roundedRect(margin, y - 4, 18, 7, 1.5, 1.5, 'F');
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(8);
     doc.setFont('helvetica', 'bold');
     doc.text(`Day ${day.day}`, margin + 2.5, y);
-
-    // Day title
     doc.setTextColor(30, 30, 30);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
     doc.text(day.title, margin + 22, y);
     y += 5;
-
-    // Day description
     doc.setTextColor(80, 80, 80);
     doc.setFontSize(8.5);
     doc.setFont('helvetica', 'normal');
@@ -125,7 +101,6 @@ export function generateItineraryPDF(tour: Tour) {
     doc.text(dayDescLines, margin + 3, y);
     y += dayDescLines.length * 4 + 3;
 
-    // Activities
     day.activities.forEach((activity) => {
       if (y > pageHeight - 20) {
         doc.addPage();
@@ -142,7 +117,6 @@ export function generateItineraryPDF(tour: Tour) {
     y += 4;
   });
 
-  // ====== HIGHLIGHTS ======
   if (y > pageHeight - 60) {
     doc.addPage();
     y = margin;
@@ -170,7 +144,6 @@ export function generateItineraryPDF(tour: Tour) {
 
   y += 5;
 
-  // ====== INCLUSIONS ======
   if (y > pageHeight - 60) {
     doc.addPage();
     y = margin;
@@ -196,7 +169,6 @@ export function generateItineraryPDF(tour: Tour) {
     y += 5;
   });
 
-  // ====== FOOTER ======
   const footerY = pageHeight - 18;
   doc.setFillColor(37, 99, 235);
   doc.rect(0, footerY - 3, pageWidth, 25, 'F');

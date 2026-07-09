@@ -1,6 +1,3 @@
-/**
- * Utility to append rows to the Google Sheet using a Google Apps Script Web App.
- */
 export async function appendToGoogleSheet(data: {
   name: string;
   phone: string;

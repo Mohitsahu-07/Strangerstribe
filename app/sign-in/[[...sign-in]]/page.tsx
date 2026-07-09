@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect } from 'react';
 import { useSignIn } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -15,13 +15,37 @@ export default function SignInPage() {
   const [emailAddress, setEmailAddress] = useState('');
   const [otpCode, setOtpCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [isUserNotFoundError, setIsUserNotFoundError] = useState(false);
   
   const [isPending, startTransition] = useTransition();
+
+  // Prefill email from query parameter or localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const emailParam = new URLSearchParams(window.location.search).get('email');
+      if (emailParam) {
+        setEmailAddress(emailParam);
+      } else {
+        const localData = localStorage.getItem('strangerstribe_user');
+        if (localData) {
+          try {
+            const localUser = JSON.parse(localData);
+            if (localUser.email) {
+              setEmailAddress(localUser.email);
+            }
+          } catch (e) {
+            console.error('Error parsing local user data', e);
+          }
+        }
+      }
+    }
+  }, []);
 
   const handleSendOTP = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!signIn) return;
     setErrorMsg('');
+    setIsUserNotFoundError(false);
 
     startTransition(async () => {
       try {
@@ -38,14 +62,16 @@ export default function SignInPage() {
 
         setMode('verify_otp');
       } catch (err: any) {
-        console.error(err);
-        const code = err.code;
+        console.error('Sign-in send OTP error:', err);
+        const firstError = err.errors?.[0];
+        const code = firstError?.code || err.code;
         if (code === 'form_identifier_not_found') {
           setErrorMsg(
-            'We couldn\'t find a traveler profile with this email address. Please check your email or explore our trips!'
+            'We couldn\'t find a traveler profile with this email address.'
           );
+          setIsUserNotFoundError(true);
         } else {
-          setErrorMsg(err.longMessage || err.message || 'Failed to send OTP. Please try again.');
+          setErrorMsg(firstError?.longMessage || firstError?.message || err.longMessage || err.message || 'Failed to send OTP. Please try again.');
         }
       }
     });
@@ -86,8 +112,9 @@ export default function SignInPage() {
           setErrorMsg('Verification completed, but additional sign-in steps are required.');
         }
       } catch (err: any) {
-        console.error(err);
-        setErrorMsg(err.longMessage || err.message || 'Incorrect verification code. Please check and try again.');
+        console.error('Sign-in verify OTP error:', err);
+        const firstError = err.errors?.[0];
+        setErrorMsg(firstError?.longMessage || firstError?.message || err.longMessage || err.message || 'Incorrect verification code. Please check and try again.');
       }
     });
   };
@@ -96,6 +123,7 @@ export default function SignInPage() {
     setMode('send_otp');
     setOtpCode('');
     setErrorMsg('');
+    setIsUserNotFoundError(false);
   };
 
   // Render a loading state if Clerk SDK is not yet ready
@@ -155,8 +183,18 @@ export default function SignInPage() {
 
         {/* Error Alert Display */}
         {errorMsg && (
-          <div className="p-4 bg-red-950/50 border border-red-800/80 rounded-xl text-xs font-bold text-red-200 leading-relaxed text-center animate-shake">
-            ⚠️ {errorMsg}
+          <div className="p-4 bg-red-950/50 border border-red-800/80 rounded-xl text-xs font-bold text-red-200 leading-relaxed text-center animate-shake space-y-2">
+            <div>⚠️ {errorMsg}</div>
+            {isUserNotFoundError && (
+              <div className="pt-1.5 border-t border-red-900/40 text-center">
+                <Link
+                  href={`/sign-up?email=${encodeURIComponent(emailAddress)}`}
+                  className="text-[#FF4B38] underline hover:text-[#e0432f] font-extrabold block mt-0.5"
+                >
+                  Create an account with this email →
+                </Link>
+              </div>
+            )}
           </div>
         )}
 
@@ -233,11 +271,19 @@ export default function SignInPage() {
         )}
 
         {/* Footer Navigation Link */}
-        <div className="text-center text-sm font-semibold text-white/40 pt-2">
-          Not a customer yet?{' '}
-          <Link href="/destinations" className="text-[#FF4B38] hover:underline font-extrabold">
-            Explore Trips
-          </Link>
+        <div className="text-center text-sm font-semibold text-white/40 pt-2 space-y-2">
+          <div>
+            Don&apos;t have an account yet?{' '}
+            <Link href="/sign-up" className="text-[#FF4B38] hover:underline font-extrabold">
+              Sign Up
+            </Link>
+          </div>
+          <div>
+            Not a customer yet?{' '}
+            <Link href="/destinations" className="text-[#FF4B38]/80 hover:underline font-bold text-xs">
+              Explore Trips
+            </Link>
+          </div>
         </div>
 
       </div>
