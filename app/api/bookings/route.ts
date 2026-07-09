@@ -80,6 +80,10 @@ export async function POST(request: Request) {
         date: new Date().toISOString().split('T')[0],
         groupSize: String(body.participants),
         totalPrice: `₹${body.totalPrice}`,
+      }).then(res => {
+        if (!res.success) {
+          console.error('Google Sheets append failed:', res.reason || JSON.stringify(res.result));
+        }
       }).catch(err => console.error('Failed to append booking to Google Sheet:', err));
     } catch (sheetErr) {
       console.error('Failed to resolve tour for Google Sheet insertion:', sheetErr);
