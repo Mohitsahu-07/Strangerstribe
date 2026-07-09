@@ -80,7 +80,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
 
               {/* Carousel Content */}
               <div
-                className={`absolute inset-0 flex flex-col justify-end p-4 md:p-12 text-white transition-all duration-700 ${
+                className={`absolute inset-0 flex flex-col justify-end px-5 pb-16 pt-4 md:p-12 text-white transition-all duration-700 ${
                   idx === currentIndex
                     ? 'opacity-100 translate-y-0 pointer-events-auto'
                     : 'opacity-0 translate-y-8 pointer-events-none'
@@ -128,7 +128,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
         </button>
 
         {/* Carousel Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
           {tours.map((_, idx) => (
             <button
               key={idx}
