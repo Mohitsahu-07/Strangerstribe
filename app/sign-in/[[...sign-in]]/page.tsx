@@ -51,6 +51,13 @@ export default function SignInPage() {
       try {
         const cleanEmail = emailAddress.trim().toLowerCase();
 
+        // Strict client-side email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z0-9-]{2,}$/;
+        if (!emailRegex.test(cleanEmail)) {
+          setErrorMsg('Please enter a valid email address (e.g. traveler@safari.com).');
+          return;
+        }
+
         // Trigger email OTP dispatch
         const { error } = await signIn.emailCode.sendCode({
           emailAddress: cleanEmail,

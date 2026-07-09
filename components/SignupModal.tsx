@@ -45,7 +45,7 @@ export default function SignupModal({ isOpen, onClose, onSuccess, tourTitle }: S
     const newErrors: typeof errors = {};
     if (!name.trim()) newErrors.name = 'Name is required';
     if (!email.trim()) newErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Enter a valid email';
+    else if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z0-9-]{2,}$/.test(email)) newErrors.email = 'Enter a valid email';
     if (!phone.trim()) newErrors.phone = 'Phone number is required';
     else if (!/^[+]?\d{10,13}$/.test(phone.replace(/[\s-]/g, ''))) newErrors.phone = 'Enter a valid phone number';
     setErrors(newErrors);

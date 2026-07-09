@@ -51,9 +51,43 @@ export default function SignUpPage() {
       try {
         const cleanEmail = emailAddress.trim().toLowerCase();
 
-        // Create a new sign up attempt
+        // Strict client-side email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z0-9-]{2,}$/;
+        if (!emailRegex.test(cleanEmail)) {
+          setErrorMsg('Please enter a valid email address (e.g. traveler@safari.com).');
+          return;
+        }
+
+        // Fetch traveler booking info if it exists to get first/last name
+        let firstName = 'Traveler';
+        let lastName = 'Tribe';
+        try {
+          const res = await fetch(`/api/bookings?email=${encodeURIComponent(cleanEmail)}`);
+          if (res.ok) {
+            const bookings = await res.json();
+            if (Array.isArray(bookings) && bookings.length > 0) {
+              const name = bookings[0].customerName?.trim();
+              if (name) {
+                const spaceIdx = name.indexOf(' ');
+                if (spaceIdx !== -1) {
+                  firstName = name.substring(0, spaceIdx);
+                  lastName = name.substring(spaceIdx + 1).trim() || 'Tribe';
+                } else {
+                  firstName = name;
+                  lastName = 'Tribe';
+                }
+              }
+            }
+          }
+        } catch (fetchErr) {
+          console.error('Failed to fetch booking details for sign-up prefill:', fetchErr);
+        }
+
+        // Create a new sign up attempt with name fields populated
         const { error } = await signUp.create({
           emailAddress: cleanEmail,
+          firstName,
+          lastName,
         });
 
         if (error) {
@@ -118,8 +152,10 @@ export default function SignUpPage() {
             },
           });
         } else {
-          console.error('Sign-up status incomplete:', signUp.status);
-          setErrorMsg('Verification completed, but additional sign-up steps are required.');
+          console.error('Sign-up status incomplete:', signUp.status, 'missing:', signUp.missingFields, 'unverified:', signUp.unverifiedFields);
+          const missingFields = signUp.missingFields?.join(', ') || 'none';
+          const unverifiedFields = signUp.unverifiedFields?.join(', ') || 'none';
+          setErrorMsg(`Verification completed, but additional sign-up steps are required. Status: ${signUp.status}, Missing: ${missingFields}, Unverified: ${unverifiedFields}`);
         }
       } catch (err: any) {
         console.error('Sign-up verify OTP error:', err);
