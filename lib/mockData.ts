@@ -414,9 +414,9 @@ export const mockTours: Tour[] = [
   },
   {
     id: '5',
-    title: 'Udaipur, Mount Abu, Jodhpur & Jaipur',
+    title: 'Udaipur',
     description: 'Immerse yourself in the royal grandeur of Rajasthan. Explore the romantic lakes of Udaipur, escape to the only hill station of Mount Abu, step into the blue city of Jodhpur, and admire the pink sandstone palaces of Jaipur.',
-    destination: 'Udaipur, Mount Abu, Jodhpur & Jaipur',
+    destination: 'Udaipur',
     duration: 7,
     price: 11999,
     originalPrice: 13999,
