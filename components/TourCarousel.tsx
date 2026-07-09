@@ -147,7 +147,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
       </div>
 
       {/* Thumbnail Grid */}
-      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 px-2 md:px-0">
+      <div className="flex flex-wrap md:grid md:grid-cols-3 lg:grid-cols-5 justify-center gap-2 md:gap-4 px-2 md:px-0">
         {tours.map((tour, idx) => (
           <button
             key={tour.id}
@@ -155,7 +155,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
               setCurrentIndex(idx);
               setIsAutoPlay(false);
             }}
-            className={`netflix-card relative group rounded-xl md:rounded-2xl overflow-hidden h-24 md:h-40 cursor-pointer animate-scale-in ${`stagger-${(idx % 5) + 1}`}`}
+            className={`netflix-card relative group rounded-xl md:rounded-2xl overflow-hidden h-24 md:h-40 cursor-pointer animate-scale-in w-[calc((100%-16px)/3)] md:w-auto ${`stagger-${(idx % 5) + 1}`}`}
           >
             <img
               src={tour.image}
@@ -169,7 +169,7 @@ export default function TourCarousel({ tours, title }: TourCarouselProps) {
               <p className="text-yellow-400 font-semibold text-xs">★ {tour.rating}</p>
             </div>
             {currentIndex === idx && (
-              <div className="absolute inset-0 border-4 border-blue-500 rounded-2xl" />
+              <div className="absolute inset-0 border-4 border-blue-500 rounded-xl md:rounded-2xl" />
             )}
           </button>
         ))}
