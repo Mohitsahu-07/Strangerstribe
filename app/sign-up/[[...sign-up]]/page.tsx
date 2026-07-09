@@ -83,11 +83,18 @@ export default function SignUpPage() {
           console.error('Failed to fetch booking details for sign-up prefill:', fetchErr);
         }
 
-        // Create a new sign up attempt with name fields populated
+        // Generate a secure random password to satisfy Clerk's password requirement
+        // (even though the flow is passwordless OTP, Clerk may have password enabled in dashboard settings)
+        const randomPassword = Math.random().toString(36).slice(-8) + 
+                               Math.random().toString(36).toUpperCase().slice(-8) + 
+                               '#ST!';
+
+        // Create a new sign up attempt with name fields and password populated
         const { error } = await signUp.create({
           emailAddress: cleanEmail,
           firstName,
           lastName,
+          password: randomPassword,
         });
 
         if (error) {
